@@ -1,0 +1,106 @@
+.menus {
+  display: flex;
+}
+
+.left {
+  position: relative;
+  display: flex;
+  width: 500px;
+  height: 530px;
+  padding-left: 44px;
+  padding-top: 50px;
+  background-color: var(--tiles);
+}
+
+.left span {
+  margin-bottom: 12px;
+}
+
+.background {
+  position: absolute;
+  top: 36px;
+  right: 36px;
+  bottom: 34px;
+  left: 124px;
+  background-color: var(--background);
+  outline: 2px solid var(--outline);
+}
+
+.block {
+  position: absolute;
+  left: 212px;
+  top: 146px;
+  width: 176px;
+  height: 132px;
+  background-color: var(--tiles);
+  border: 2px solid var(--outline);
+}
+
+.leftA,
+.leftB {
+  position: relative;
+  width: 260px;
+  display: flex;
+  flex-direction: column;
+  font-size: 52px;
+  color: var(--menu);
+}
+
+.leftB {
+  margin-top: 128px;
+}
+
+.leftSelected {
+  position: relative;
+  color: var(--selected);
+}
+
+.leftB .leftSelected:before {
+  content: ">";
+  position: absolute;
+  left: -22px;
+}
+
+.right {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  flex: 1;
+  padding: 24px;
+  font-size: 30px;
+}
+
+.statsRow {
+  margin-bottom: 8px;
+  color: var(--profile);
+}
+
+.statsRow span:first-child {
+  display: inline-block;
+  width: 180px;
+  margin-right: 50px;
+  text-align: right;
+}
+
+.statsRow span:nth-child(2) {
+  display: inline-block;
+  width: 170px;
+}
+
+.statsRow:not(:first-child) span:not(:nth-child(2)) {
+  color: var(--profile-highlights);
+}
+
+.help {
+  padding: 20px 24px;
+  background-color: var(--background);
+  color: var(--help);
+}
+
+.help div {
+  margin-bottom: 16px;
+}
+
+.help div:first-child {
+  color: var(--help-header);
+}

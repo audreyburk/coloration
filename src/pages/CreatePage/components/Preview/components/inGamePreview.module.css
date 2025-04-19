@@ -1,0 +1,307 @@
+.inGamePreview {
+  position: relative;
+  height: 600px;
+  padding: 36px 388px 34px 124px;
+  background-color: var(--tiles);
+  z-index: 1;
+}
+
+.timeBars {
+  position: absolute;
+  top: 6px;
+  right: 28px;
+  left: 28px;
+  display: flex;
+  font-size: 22px;
+}
+
+.timeBars > div {
+  display: flex;
+  position: relative;
+  flex: 1;
+  margin-right: 12px;
+}
+
+.timeBars > div > *:nth-child(1) {
+  flex: 2;
+}
+.timeBars > div > *:nth-child(2) {
+  flex: 1;
+}
+.timeBars > div > *:nth-child(3) {
+  flex: 3;
+}
+
+.timeBars > div > *:last-child {
+  position: absolute;
+  left: 12px;
+}
+
+.timeBar1 {
+  color: var(--timebar-1-text);
+}
+.timeBar1A {
+  background-color: var(--timebar-1-main);
+}
+.timeBar1B {
+  margin-left: -2px;
+  background-color: var(--timebar-1-main);
+  color: var(--timebar-1-bonus);
+}
+.timeBar1C {
+  margin-left: -2px;
+  background-color: var(--timebar-1-main);
+  color: var(--tiles);
+}
+
+.timeBar2 {
+  color: var(--timebar-2-text);
+}
+.timeBar2A {
+  background-color: var(--timebar-2-main);
+}
+.timeBar2B {
+  margin-left: -2px;
+  background-color: var(--timebar-2-main);
+  color: var(--timebar-2-bonus);
+}
+.timeBar2C {
+  margin-left: -2px;
+  background-color: var(--timebar-2-main);
+  color: var(--tiles);
+}
+
+.timeBar3 {
+  color: var(--timebar-3-text);
+}
+.timeBar3A {
+  background-color: var(--timebar-3-main);
+}
+.timeBar3B {
+  margin-left: -2px;
+  background-color: var(--timebar-3-main);
+  color: var(--timebar-3-bonus);
+}
+.timeBar3C {
+  margin-left: -2px;
+  background-color: var(--timebar-3-main);
+  color: var(--tiles);
+}
+
+.timeBar4 {
+  margin-right: 0;
+  color: var(--timebar-4-text);
+}
+.timeBar4A {
+  background-color: var(--timebar-4-main);
+}
+.timeBar4B {
+  margin-left: -2px;
+  background-color: var(--timebar-4-main);
+  color: var(--timebar-4-bonus);
+}
+.timeBar4C {
+  margin-left: -2px;
+  background-color: var(--timebar-4-main);
+  color: var(--tiles);
+}
+
+.background {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: var(--background);
+  outline: 2px solid var(--outline);
+  z-index: -3;
+}
+
+.completed {
+  position: absolute;
+  top: 112px;
+  right: 24px;
+  font-size: 40px;
+  color: var(--post-completion);
+}
+
+.oops {
+  position: absolute;
+  font-size: 108px;
+  top: 67px;
+  left: 47px;
+  color: var(--oops);
+}
+
+.pauseOuter {
+  position: absolute;
+  top: calc(50% - 145px);
+  left: 30%;
+  width: 272px;
+  height: 290px;
+  padding: 1px;
+  background-color: var(--pause-background);
+}
+
+.pauseOutline {
+  width: 100%;
+  height: 100%;
+  padding: 2px;
+  background-color: var(--pause-outline);
+}
+
+.pauseOuter,
+.pauseOutline {
+  clip-path:
+    polygon(
+      -1px -1px,
+      -1px calc(100% - 46px),
+      46px calc(100% + 1px),
+      calc(100% + 1px) calc(100% + 1px),
+      calc(100% + 1px) -1px
+    );
+}
+
+.pause {
+  width: 100%;
+  height: 100%;
+  padding: 16px 20px;
+  background-color: var(--pause-background);
+  color: var(--pause-text);
+  font-size: 32px;
+  clip-path:
+    polygon(
+      -1px -1px,
+      -1px calc(100% - 45px),
+      45px calc(100% + 1px),
+      calc(100% + 1px) calc(100% + 1px),
+      calc(100% + 1px) -1px
+    );
+}
+
+.pausePaused {
+  padding-bottom: 10px;
+  margin-bottom: 8px;
+  font-size: 42px;
+  border-bottom: 1px solid var(--outline);
+}
+
+.pauseResume {
+  margin-bottom: 18px;
+  color: var(--pause-highlight);
+  font-size: 56px;
+}
+
+.pauseRetry {
+  margin-bottom: 18px;
+}
+
+.lshift,
+.social {
+  position: absolute;
+  bottom: 0;
+  background-color: var(--social-background);
+  color: var(--social-highlight);
+  font-size: 30px;
+}
+
+.lshift {
+  left: 0;
+  width: 127px;
+  height: 90px;
+  padding-top: 41px;
+  padding-left: 23px;
+  clip-path:
+    polygon(
+      -1px -1px,
+      -1px calc(100% + 1px),
+      calc(100% + 1px) calc(100% + 1px),
+      calc(100% + 1px) 46px,
+      calc(100% - 46px) -1px
+    );
+}
+
+.social {
+  right: 0;
+  height: 350px;
+  width: 500px;
+  padding-top: 6px;
+  padding-left: 50px;
+  font-size: 30px;
+  clip-path:
+    polygon(
+      46px -1px,
+      -1px 46px,
+      -1px calc(100% + 1px),
+      calc(100% + 1px) calc(100% + 1px),
+      calc(100% + 1px) -1px
+    );
+}
+
+.social span {
+  color: var(--social-text);
+}
+
+.social span.soundtrack {
+  color: var(--soundtrack);
+}
+
+.social div:before {
+  display: inline-block;
+  width: 26px;
+  height: 26px;
+  padding-top: 7px;
+  margin-right: 14px;
+  text-align: center;
+  border: 1px solid currentColor;
+  font-size: 15px;
+  vertical-align: top;
+}
+
+.socialSocial {
+  margin-left: 40px;
+  font-size: 56px;
+}
+
+.socialFavourite {
+  margin-top: 20px;
+}
+.socialFavourite:before {
+  content: "Z";
+}
+
+.socialFollow {
+  margin-top: 40px;
+}
+.socialFollow:before {
+  content: "C";
+}
+
+.socialTrack {
+  margin-top: 10px;
+}
+.socialTrack:before {
+  content: "X";
+}
+
+.socialSoundtrack {
+  margin-top: 75px;
+  margin-left: 10px;
+}
+
+.text {
+  position: absolute;
+  bottom: 5px;
+  left: 140px;
+  font-size: 27px;
+}
+
+.name {
+  color: var(--level-name);
+}
+
+.challenges {
+  color: var(--challenges);
+}
+
+.challengeComplete {
+  color: var(--challenge-complete);
+}

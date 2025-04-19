@@ -1,0 +1,231 @@
+.editorPreview {
+  position: relative;
+  height: 596px;
+  padding: 36px 36px 34px;
+  background-color: var(--tiles);
+  z-index: 1;
+}
+
+.background {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: var(--background);
+  outline: 2px solid var(--outline);
+  z-index: -3;
+}
+
+.gridWide,
+.gridFine {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.gridFine {
+  width: 308px;
+  background-size: 11px 11px;
+  background-image:
+    linear-gradient(to right, var(--fine-grid) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--fine-grid) 1px, transparent 1px);
+}
+
+.gridWide {
+  width: 880px;
+  background-size: 44px 44px;
+  background-image:
+    linear-gradient(to right, var(--wide-grid) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--wide-grid) 1px, transparent 1px);
+}
+
+.blockA {
+  position: absolute;
+  top: 132px;
+  left: 220px;
+  width: 176px;
+  height: 88px;
+  background-color: var(--tiles);
+  border: 2px solid var(--outline);
+}
+
+.blockB {
+  position: absolute;
+  top: 352px;
+  left: 572px;
+  width: 176px;
+  height: 88px;
+  background-color: var(--tiles);
+  border: 2px solid var(--outline);
+}
+
+.selector {
+  position: absolute;
+  top: 170px;
+  left: 434px;
+  width: 144px;
+  height: 144px;
+  border: 3px solid var(--selector);
+}
+
+.selection {
+  position: absolute;
+  top: 220px;
+  left: 440px;
+  width: 88px;
+  height: 88px;
+  background-color: var(--selection);
+}
+
+.goldmineA {
+  position: absolute;
+  top: 88px;
+  left: 308px;
+}
+
+.goldmineB {
+  position: absolute;
+  top: 170px;
+  left: 434px;
+}
+
+.exit {
+  position: absolute;
+  top: 22px;
+  left: 330px;
+}
+
+.switch {
+  position: absolute;
+  top: 396px;
+  left: 176px;
+}
+
+.entities {
+  /* overlay does not affect center tile. ugh lol */
+  position: absolute;
+  top: 208px;
+  left: 649px;
+  color: var(--keys);
+}
+
+.entitiesBackground {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: color-mix(in srgb, var(--background) 18%, white 15%);
+  mix-blend-mode: hard-light;
+}
+
+.entityCanvas {
+  isolation: isolate;
+}
+
+.circle {
+  position: absolute;
+  top: 139px;
+  left: 187px;
+  width: 69px;
+  height: 69px;
+  border: 2px solid var(--circle);
+  border-radius: 50%;
+}
+
+.keys {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  bottom: 8px;
+  left: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-size: 14px;
+}
+
+.keys div {
+  display: flex;
+  justify-content: space-between;
+}
+
+.lineBox {
+  position: absolute;
+  top: 24px;
+  left: 271px;
+  width: 9px;
+  height: 415px;
+  padding: 4px;
+  transform: rotate(22.6deg);
+}
+.lineBox:hover {
+  background: color-mix(in srgb, var(--outline) 12%, transparent);
+  outline: 5px solid color-mix(in srgb, var(--outline) 12%, transparent);
+}
+
+.line {
+  width: 100%;
+  height: 100%;
+  background-color: var(--line);
+}
+
+.cursor {
+  position: absolute;
+  top: 352px;
+  left: 352px;
+  width: 44px;
+  height: 44px;
+}
+
+.cursor div {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+}
+
+.cursorA {
+  top: -3px;
+  left: -3px;
+  border-top: 2px solid var(--selector);
+  border-left: 2px solid var(--selector);
+}
+
+.cursorB {
+  top: -3px;
+  right: -3px;
+  border-top: 2px solid var(--selector);
+  border-right: 2px solid var(--selector);
+}
+
+.cursorC {
+  bottom: -3px;
+  left: -3px;
+  border-bottom: 2px solid var(--selector);
+  border-left: 2px solid var(--selector);
+}
+
+.cursorD {
+  right: -3px;
+  bottom: -3px;
+  border-right: 2px solid var(--selector);
+  border-bottom: 2px solid var(--selector);
+}
+
+.text {
+  position: absolute;
+  bottom: 5px;
+  left: 140px;
+  right: 140px;
+  font-size: 27px;
+  display: flex;
+}
+
+.editMode {
+  color: var(--bottom-info);
+  font-size: 22px;
+}
+
+.levelName {
+  margin-left: auto;
+  color: var(--level-name);
+}
+

@@ -1,0 +1,36 @@
+.field {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 7px;
+  list-style-type: none;
+}
+
+.input {
+  width: 108px;
+  padding: 11px 15px 10px;
+  margin-right: 12px;
+  border: none;
+  /* border-radius: 10px; */
+  font-family: 'Courier New';
+  font-size: 20px;
+  letter-spacing: 1px;
+}
+
+.picker {
+  position: absolute !important;
+  display: none !important;
+  width: 300px !important;
+  height: 230px !important;
+  top: calc(50% + 25px);
+  z-index: 1;
+}
+.field:focus-within .picker,
+.picker:hover {
+  display: flex !important;
+}
+
+.text {
+  display: block;
+  margin-bottom: 10px;
+}

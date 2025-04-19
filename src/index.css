@@ -1,0 +1,58 @@
+/* should we do this here or in a module? */
+@font-face{
+  font-family: "Sys";
+  src:
+    local("Sys"),
+    url('./assets/Sys.otf');
+}
+
+@font-face{
+  font-family: "Source Sans";
+  src:
+    /* local("Source Sans 3"), */
+    /* local("Source Sans 3 Regular"), */
+    url('./assets/SourceSans3-Regular.ttf');
+}
+
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  /* color-scheme: light dark; */
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #191919;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  box-sizing: border-box
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body, #root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  /* min-height: 100vh; */
+}
+
+.container {
+  width: 1188px;
+  margin: 0 auto;
+  background: #181818;
+}
+
+main {
+  width: 100%;
+  padding: 36px 36px 176px;
+}
+
+ul {
+  padding: 0;
+}

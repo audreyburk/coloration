@@ -1,0 +1,246 @@
+.levels {
+  padding: 24px 24px 5px;
+}
+
+.header {
+  margin-bottom: 20px;
+  font-size: 90px;
+  color: var(--level-info);
+}
+
+.tabs {
+  display: flex;
+}
+
+.tabs > * {
+  flex: 1;
+  background-color: var(--tab-background);
+  color: var(--tab-text);
+}
+
+.subTabs {
+  display: flex;
+  padding: 0 8px;
+}
+
+.subTabs > * {
+  flex: 1;
+  color: var(--subtab-text);
+}
+
+.tabs > *:nth-child(2),
+.subTabs > *:first-child {
+  background: var(--tab-background-selected);
+  color: var(--tab-text-selected);
+}
+
+.body {
+  position: relative;
+  padding: 0 60px;
+}
+
+.arrowA,
+.arrowB {
+  position: absolute;
+  top: -13px;
+  left: 0;
+  width: 26px;
+  height: 15px;
+  border-radius: 2px;
+  background-color: var(--selector);
+  clip-path:
+    polygon(
+      13px -1px,
+      14px -1px,
+      -1px 13px,
+      -1px 14px,
+      2px 16px,
+      24px 16px,
+      27px 14px,
+      27px 13px
+    )
+}
+
+.arrowB {
+  top: unset;
+  bottom: 175px;
+  transform: rotate(180deg);
+}
+
+.bar {
+  position: absolute;
+  top: 60px;
+  left: 0;
+  width: 26px;
+  height: 4px;
+  border-radius: 2px;
+  background-color: var(--selector);
+}
+
+.grid {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin: 40px 0 16px;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+}
+.row {
+  margin-bottom: 24px;
+}
+
+.level {
+  position: relative;
+  font-size: 20px;
+}
+
+.fav {
+  position: absolute;
+  top: -10px;
+  left: 0;
+  color: var(--brackets);
+  font-size: 30px;
+}
+
+.brackets {
+  position: absolute;
+  top: 5px;
+  right: 0;
+  color: var(--brackets);
+}
+
+.title {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  max-width: 100%;
+  color: var(--level-info);
+  text-wrap: wrap;
+  text-align: right;
+}
+
+.cursor {
+  position: absolute;
+  top: 137px;
+  left: 209px;
+  width: 187px;
+  height: 111px;
+  padding-top: 37px;
+  text-align: center;
+  font-size: 30px;
+}
+
+.cursor div {
+  position: absolute;
+  width: 23px;
+  height: 23px;
+}
+
+.cursorA {
+  top: -13px;
+  left: -13px;
+  border-top: 2px solid var(--selector);
+  border-left: 2px solid var(--selector);
+}
+
+.cursorB {
+  top: -13px;
+  right: -13px;
+  border-top: 2px solid var(--selector);
+  border-right: 2px solid var(--selector);
+}
+
+.cursorC {
+  bottom: -13px;
+  left: -13px;
+  border-bottom: 2px solid var(--selector);
+  border-left: 2px solid var(--selector);
+}
+
+.cursorD {
+  right: -13px;
+  bottom: -13px;
+  border-right: 2px solid var(--selector);
+  border-bottom: 2px solid var(--selector);
+}
+
+.info {
+  font-size: 30px;
+  color: var(--level-info);
+}
+
+.credit {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 2px solid var(--selector);
+}
+
+.stats {
+  display: flex;
+  justify-content: space-between;
+}
+
+.challenges {
+  margin-top: 6px;
+  font-size: 20px;
+  color: var(--challenge);
+}
+
+.challenges span {
+  color: var(--challenge-complete);
+}
+
+.bottomText {
+  margin-top: 40px;
+  font-size: 22px;
+  color: var(--bottom-text);
+}
+
+.bottomText span {
+  margin-right: 40px;
+}
+
+.bottomText .next {
+  margin-right: 100px;
+}
+
+.bottomText .back {
+  margin-right: 300px;
+}
+
+.bottomText span:before {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  padding-top: 2px;
+  margin-top: 2px;
+  margin-right: 7px;
+  text-align: center;
+  border: 1px solid currentColor;
+  font-size: 15px;
+  vertical-align: top;
+}
+
+.bottomText .prev:before {
+  content: "A";
+}
+
+.bottomText .next:before {
+  content: "D";
+}
+
+.bottomText .back:before {
+  content: "F";
+}
+
+.bottomText .view:before {
+  content: "TAB";
+  width: 36px;
+}
+
+.bottomText .search:before {
+  content: "S";
+}

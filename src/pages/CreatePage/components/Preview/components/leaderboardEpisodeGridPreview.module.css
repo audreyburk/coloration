@@ -1,0 +1,232 @@
+.leaderboard {
+  display: flex;
+  padding: 24px;
+}
+
+.grid {
+  flex: 1;
+  margin-right: 24px;
+}
+
+.gridTabs {
+  display: flex;
+}
+
+.gridTabs > * {
+  flex: 1;
+  background-color: var(--grid-tab-background);
+  color: var(--grid-tab-text);
+  text-align: right;
+}
+
+.gridTabs > .gridTabSelected {
+  background-color: var(--grid-tab-background-selected);
+  color: var(--grid-tab-text-selected);
+}
+
+.episodeGrid {
+  margin-top: 60px;
+}
+
+.episodeRow {
+  display: flex;
+  margin-bottom: 7px;
+}
+
+.episode {
+  /* these might use the light style of the font?? */
+  /* no, the numbers at least are perfect. maybe ?! is smaller/lighter */
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: 58px;
+  height: 58px;
+  padding: 2px;
+  margin-right: 7px;
+  border: 2px solid var(--episode-border);
+  color: var(--episode-text);
+  font-size: 24px;
+}
+.episodeSelected,
+.episodeDone {
+  background-color: var(--episode-background);
+  color: var(--episode-text);
+}
+.episodeNext {
+  background-color: var(--episode-background-uncompleted);
+  color: var(--episode-text-uncompleted);
+}
+.episodeNone span {
+  display: none;
+}
+
+.episodeSelected {
+  position: relative;
+}
+.episodeSelected:before {
+  /* https://css-shape.com/corner-only/ */
+  content: "";
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  bottom: -8px;
+  left: -8px;
+  --s: 16px; /* size of the corners */
+  border: 2px solid var(--selection);
+  mask:
+    conic-gradient(#000 0 0) content-box,
+    conic-gradient(at var(--s) var(--s),#0000 75%,#000 0)
+    0 0/calc(100% - var(--s)) calc(100% - var(--s));
+}
+
+.episodeBrackets {
+  color: var(--brackets);
+}
+
+.episodeName {
+  align-self: center;
+}
+
+
+.episodeDetail {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 50px;
+  color: var(--episode-information);
+}
+
+.episodeTitle,
+.episodeInfo {
+  flex: 0 0 100%;
+  font-size: 36px;
+}
+
+.episodeInfo {
+  text-align: right;
+}
+
+.levelA,
+.levelB {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 235px;
+  height: 144px;
+  padding: 12px;
+  margin: 24px 0;
+  background-color: var(--tiles);
+}
+
+.levelA:before,
+.levelB:before {
+  content: "";
+  display: block;
+  width: 200px;
+  height: 60px;
+  background-color: var(--background);
+  border: 1px solid var(--outline);
+}
+
+.levelB:before {
+  width: 100%;
+  height: 100%;
+}
+
+
+
+.scoreboard {
+  flex: 0 0 460px;
+}
+
+.scores {
+  clip-path:
+    polygon(
+      -1px -1px,
+      -1px calc(100% - 22px),
+      22px calc(100% + 1px),
+      calc(100% + 1px) calc(100% + 1px),
+      calc(100% + 1px) -1px
+    );
+
+  width: 100%;
+  padding: 0 2px 12px;
+  background-color: var(--leaderboard-background);
+  font-family: 'Source Sans';
+  font-size: 18px;
+}
+
+.scores div {
+  display: flex;
+  align-items: center;
+  height: 41px;
+  padding-top: 6px;
+  border-top: 2px solid transparent;
+}
+
+.scores .selected,
+.scores .selected + div {
+  border-color: var(--leaderboard-selection);
+}
+
+.scores span:nth-child(1) {
+  flex: 0 0 48px;
+  margin-left: 12px;
+  color: var(--leaderboard-ranks);
+}
+
+.scores span:nth-child(2) {
+  flex: 0 0 160px;
+  color: var(--leaderboard-scores);
+}
+
+.scores span:nth-child(3) {
+  color: var(--leaderboard-names);
+}
+
+.myScore {
+  font-family: Sys;
+  font-size: 20px;
+}
+
+.myScore span:nth-child(1) {
+  color: var(--leaderboard-scores);
+}
+
+.myScore span:nth-child(2) {
+  color: var(--leaderboard-names);
+}
+
+.myScore span:nth-child(3) {
+  font-size: 16px;
+  color: var(--leaderboard-ranks);
+}
+
+
+
+.scoreboardTabs {
+  display: flex;
+  margin-top: 4px;
+  color: var(--leaderboard-tab-text)
+}
+
+.tabGlobalScores {
+  flex: 9;
+  background-color: var(--leaderboard-tab-background-selected);
+  text-align: left;
+}
+
+.tabMyScores {
+  flex: 4;
+  background-color: var(--leaderboard-tab-background);
+  text-align: left;
+}
+
+.tabSpeedrun {
+  flex: 5;
+  background-color: var(--leaderboard-tab-background);
+  text-align: left;
+}
+

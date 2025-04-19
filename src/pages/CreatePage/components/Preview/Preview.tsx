@@ -1,0 +1,52 @@
+import EditorPreview from './components/EditorPreview'
+import EntityPreview from './components/EntityPreview'
+import InGamePreview from './components/InGamePreview'
+import LeaderboardEpisodeGridPreview from './components/LeaderboardEpisodeGridPreview'
+import LevelsPreview from './components/LevelsPreview'
+import MenuPreview from './components/MenuPreview'
+
+
+// i think we'll end up factoring out this component, actually
+// LMAO
+
+interface Props {
+  // the actual way to do useState functions:
+  // setMyVar: (value: boolean | ((prevVar: boolean) => boolean)) => void;
+  setSectionIdx: (i: number) => void;
+  setItemIdx: (i: number) => void;
+  colors: { [index: string]: string[] };
+  canvasType: string; // one of a set, actually
+}
+
+export default function Preview({
+  colors,
+  setSectionIdx,
+  setItemIdx,
+  canvasType
+}: Props) {
+  // canvasTypes to use:
+  // + objects
+  // + leaderboard + episode grid
+  // + side menu + pause menu + while playing stuff + race timeBars + Oops!
+  // + editor + ?
+  // + top menus (userlevels) + browse thumbnails + challenge completion (bottom)
+  // main menu + profile + help menu + editor menu if necessary
+
+
+  // Objects
+  // Episodes + Leaderboard
+  // Levels
+  // Playing
+  // Editor
+  // Menus
+
+  return <>
+    {/* make sure switching among these doesnt get messy. lack of keys is concerning. */}
+    { canvasType === 'editor' &&      <EditorPreview setItemIdx={setItemIdx} setSectionIdx={setSectionIdx} colors={colors} /> }
+    { canvasType === 'ingame' &&      <InGamePreview setItemIdx={setItemIdx} setSectionIdx={setSectionIdx} colors={colors} /> }
+    { canvasType === 'leaderboard' && <LeaderboardEpisodeGridPreview setItemIdx={setItemIdx} setSectionIdx={setSectionIdx} colors={colors} /> }
+    { canvasType === 'levels' &&      <LevelsPreview setItemIdx={setItemIdx} setSectionIdx={setSectionIdx} colors={colors} /> }
+    { canvasType === 'menu' &&        <MenuPreview setItemIdx={setItemIdx} setSectionIdx={setSectionIdx} colors={colors} /> }
+    { canvasType === 'objects' &&     <EntityPreview setItemIdx={setItemIdx} setSectionIdx={setSectionIdx} colors={colors} /> }
+  </>
+}
