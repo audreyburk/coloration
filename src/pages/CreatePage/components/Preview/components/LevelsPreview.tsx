@@ -4,9 +4,6 @@ import Level from '../../../../../components/Level'
 
 import styles from './levelsPreview.module.css'
 
-
-// we need to add ++s like favorited levels, maybe XX like tracked too
-// and the hovered level needs to say Play instead of the title
 const levels = [
   [
     [ 'tilt', '[!?]', true ],

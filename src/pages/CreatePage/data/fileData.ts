@@ -46,8 +46,8 @@ export const objects: { [index: string]: Field[] } = {
   ],
 
   fxNinja: [
-    { text: "Jumping dust" },
-    { text: "Falling dust" }
+    { text: "Jumping dust (usually higher-contrast)" },
+    { text: "Falling dust (usually lower-contrast)" }
   ],
 
   headbands: [

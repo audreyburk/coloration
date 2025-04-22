@@ -30,7 +30,7 @@ export default function CreatePage() {
   const [ sectionIdx, setSectionIdx ] = useState(0)
   const [ itemIdx, setItemIdx ] = useState(0)
   // const [ fieldIdx, setFieldIdx ] = useState(0)
-  const [ canvasType, setCanvasType ] = useState('menu') // objects ingame editor leaderboard
+  const [ canvasType, setCanvasType ] = useState('objects') // objects ingame editor leaderboard
 
   const items = sectionData[sectionIdx].items
   const { fileName } = items[itemIdx]

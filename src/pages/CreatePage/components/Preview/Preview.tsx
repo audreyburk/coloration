@@ -4,6 +4,7 @@ import InGamePreview from './components/InGamePreview'
 import LeaderboardEpisodeGridPreview from './components/LeaderboardEpisodeGridPreview'
 import LevelsPreview from './components/LevelsPreview'
 import MenuPreview from './components/MenuPreview'
+import ObjectsPreview from './components/ObjectsPreview'
 
 
 // i think we'll end up factoring out this component, actually
@@ -24,29 +25,14 @@ export default function Preview({
   setItemIdx,
   canvasType
 }: Props) {
-  // canvasTypes to use:
-  // + objects
-  // + leaderboard + episode grid
-  // + side menu + pause menu + while playing stuff + race timeBars + Oops!
-  // + editor + ?
-  // + top menus (userlevels) + browse thumbnails + challenge completion (bottom)
-  // main menu + profile + help menu + editor menu if necessary
-
-
-  // Objects
-  // Episodes + Leaderboard
-  // Levels
-  // Playing
-  // Editor
-  // Menus
-
   return <>
     {/* make sure switching among these doesnt get messy. lack of keys is concerning. */}
+    { canvasType === 'objects' &&     <ObjectsPreview setItemIdx={setItemIdx} setSectionIdx={setSectionIdx} colors={colors} /> }
     { canvasType === 'editor' &&      <EditorPreview setItemIdx={setItemIdx} setSectionIdx={setSectionIdx} colors={colors} /> }
     { canvasType === 'ingame' &&      <InGamePreview setItemIdx={setItemIdx} setSectionIdx={setSectionIdx} colors={colors} /> }
     { canvasType === 'leaderboard' && <LeaderboardEpisodeGridPreview setItemIdx={setItemIdx} setSectionIdx={setSectionIdx} colors={colors} /> }
     { canvasType === 'levels' &&      <LevelsPreview setItemIdx={setItemIdx} setSectionIdx={setSectionIdx} colors={colors} /> }
     { canvasType === 'menu' &&        <MenuPreview setItemIdx={setItemIdx} setSectionIdx={setSectionIdx} colors={colors} /> }
-    { canvasType === 'objects' &&     <EntityPreview setItemIdx={setItemIdx} setSectionIdx={setSectionIdx} colors={colors} /> }
+    { canvasType === 'entities' &&    <EntityPreview setItemIdx={setItemIdx} setSectionIdx={setSectionIdx} colors={colors} /> }
   </>
 }

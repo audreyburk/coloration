@@ -10,6 +10,7 @@ button {
   width: calc(100% + 72px);
   margin-left: -36px;
   cursor: default;
+  user-select: none;
 
   font-family: Sys;
   line-height: 1;

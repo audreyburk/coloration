@@ -6,8 +6,7 @@ import styles from './leaderboardEpisodeGridPreview.module.css'
 
 // we still need to add the bottom text!!!!!
 
-// i think we'll end up factoring out this component, actually
-// LMAO
+// TODO: add the little brackets on the levels at the bottom
 
 interface Props {
   setSectionIdx: (i: number) => void;
