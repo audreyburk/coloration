@@ -1,12 +1,10 @@
 // import episodeGridData from '../../../data/episodeGridData'
 // import leaderboardData from '../../../data/leaderboardData'
-import Tab from '../../../../../components/Tab'
+import Tab from './Tab'
 
 import styles from './inGamePreview.module.css'
 
 interface Props {
-  setSectionIdx: (i: number) => void;
-  setItemIdx: (i: number) => void;
   colors: { [index: string]: string[] };
 }
 
@@ -15,8 +13,6 @@ interface Props {
 
 export default function InGamePreview({
   colors,
-  // setSectionIdx,
-  // setItemIdx
 }: Props) {
   const cssVars = {
     '--background':           colors.background[2],

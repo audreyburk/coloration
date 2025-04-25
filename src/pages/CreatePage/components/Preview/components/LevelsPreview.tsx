@@ -1,6 +1,6 @@
 
-import Tab from '../../../../../components/Tab'
-import Level from '../../../../../components/Level'
+import Tab from './Tab'
+import Level from './Level'
 
 import styles from './levelsPreview.module.css'
 
@@ -29,15 +29,11 @@ const levels = [
 ]
 
 interface Props {
-  setSectionIdx: (i: number) => void;
-  setItemIdx: (i: number) => void;
   colors: { [index: string]: string[] };
 }
 
 export default function LevelsPreview({
   colors,
-  // setSectionIdx,
-  // setItemIdx
 }: Props) {
   const cssVars = {
     '--background':                     colors.background[2],

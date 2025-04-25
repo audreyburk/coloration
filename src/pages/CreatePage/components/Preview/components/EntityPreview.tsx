@@ -3,7 +3,7 @@ import { useRef, useEffect } from 'react'
 import { entityCoordinates }  from '../../../data/entityCoordinates'
 import sectionData            from '../../../data/sectionData'
 import drawSprites            from '../../../utils/drawSprites'
-import Tab                    from '../../../../../components/Tab'
+import Tab                    from './Tab'
 
 import styles from './entityPreview.module.css'
 
@@ -14,15 +14,11 @@ import styles from './entityPreview.module.css'
 // dunno how intense that is compared to canvas rendering
 
 interface Props {
-  setSectionIdx: (i: number) => void;
-  setItemIdx: (i: number) => void;
   colors: { [index: string]: string[] };
 }
 
 export default function EntityPreview({
   colors,
-  setSectionIdx,
-  setItemIdx
 }: Props) {
   const canvasRef = useRef<HTMLCanvasElement | null>(null)
   const screenRef = useRef<HTMLDivElement | null>(null)

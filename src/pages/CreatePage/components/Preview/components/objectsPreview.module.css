@@ -35,27 +35,24 @@
   outline: 2px solid var(--outline); /* outline doesnt take up space */
 }
 
-.lowerText > * {
+.lowerText {
   position: absolute;
+  bottom: 5px;
   font-size: 27px;
   color: var(--level-name);
 }
 
 .levelID {
-  bottom: 5px;
-  left: 60px;
+  margin-left: 40px;
 }
 
-
 .challenges {
-  bottom: 5px;
-  left: 320px;
+  margin-left: 120px;
   color: var(--challenges);
 }
 
 .title {
-  bottom: 5px;
-  right: 60px;
+  margin-left: 220px;
 }
 
 .brackets {

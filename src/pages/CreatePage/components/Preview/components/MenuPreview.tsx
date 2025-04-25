@@ -1,13 +1,7 @@
-
-import Tab from '../../../../../components/Tab'
-import Level from '../../../../../components/Level'
-
 import styles from './menuPreview.module.css'
 
 
 interface Props {
-  setSectionIdx: (i: number) => void;
-  setItemIdx: (i: number) => void;
   colors: { [index: string]: string[] };
 }
 
@@ -15,8 +9,6 @@ interface Props {
 
 export default function MenuPreview({
   colors,
-  // setSectionIdx,
-  // setItemIdx
 }: Props) {
   const cssVars = {
     '--background':           colors.background[2],

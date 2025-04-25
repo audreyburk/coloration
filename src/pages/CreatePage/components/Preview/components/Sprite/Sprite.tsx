@@ -19,16 +19,24 @@ Object.entries(spriteGlob).forEach(([key, value]) => {
 
 // TODO: add all outlines please
 
+// here's an interesting thought -- instead of the color index, pass in the css variable name
+// that assumes we'll do everything with css variables, but that might not be a bad call?
+// would prevent the rerenders, right?
+// and if we needed a custom colored object, we could just set those variables. ez.
+
+// does receiving new props always trigger a rerender? how can we prevent rerender if used colors dont change?
+
+
 interface Props {
   objectName: string; // sprites.keys().join('|')
   colors: { [index: string]: string[] }; // or, alternatively, color, or specific colors.... hm
   className?: string;
-  style?: { [index:string]: string | number };
+  style?: React.CSSProperties;
 }
 
-// does receiving new props always trigger a rerender? how can we prevent rerender if used colors dont change?
+export default function Sprite(props: Props) {
+  const { colors, objectName, className, style = {} } = props
 
-export default function Sprite({ colors, objectName, className, style = {} }: Props) {
   let cn = styles.container
   if (className) {
     cn = cn + ' ' + className
@@ -37,11 +45,6 @@ export default function Sprite({ colors, objectName, className, style = {} }: Pr
   const { layers, height = 44, width = 44 } = spriteData[objectName]
   const offsetX = (44 - width) / 2
   const offsetY = (44 - height) / 2
-
-  // here's an interesting thought -- instead of the color index, pass in the css variable name
-  // that assumes we'll do everything with css variables, but that might not be a bad call?
-  // would prevent the rerenders, right?
-  // and if we needed a custom colored object, we could just set those variables. ez.
 
   return <div className={styles.container} style={style}>
     {

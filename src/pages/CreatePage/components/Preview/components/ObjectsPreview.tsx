@@ -1,5 +1,6 @@
-import Sprite from '../../../../../components/Sprite'
-import Tab    from '../../../../../components/Tab'
+import PreviewLink  from './PreviewLink'
+import Sprite       from './Sprite'
+import Tab          from './Tab'
 
 import styles from './objectsPreview.module.css'
 
@@ -7,7 +8,7 @@ import styles from './objectsPreview.module.css'
 
 
 
-const coordinates: [ string, number, number ][] = [
+const objectCoordinates: [ string, number, number ][] = [
   [ 'exitOpen',                    1, 1 ],
   [ 'exit',                        3, 1 ],
   [ 'exitChallenge',               5, 1 ],
@@ -63,24 +64,46 @@ const coordinates: [ string, number, number ][] = [
   [ 'headbandY',                   3, 10 ],
   [ 'headbandZ',                   4, 10 ],
 
-  [ 'blood',                    14.5, 10 ],
-  [ 'bloodGolden',              17.5, 10 ],
+  [ 'bloodGolden',              14.5, 10 ],
+  [ 'blood',                    17.5, 10 ],
   [ 'groundDust',               19.5, 10 ],
   [ 'explosionRocket',            23, 10 ],
 
   [ 'explosion',                  22, 2.5 ],
 ]
 
+const hoverCoordinates: [ string, number, number, number, number ][] = [
+  [ 'Exit',             0.5,    1,    6,    1 ],
+  [ 'Exit Switch',      7,      1,    2,    1 ],
+  [ 'Normal Door',      10,     1,    1,    1 ],
+  [ 'Locked Door',      11,     1,    3,    1 ],
+  [ 'Trap Door',        14,     1,    3,    1 ],
+  [ 'Gold',             17,     1,    1,    1 ],
+  [ 'Thwumps',          1,      3,    3,    1 ],
+  [ 'Kindly Objects',   5,      3,    8,    1 ],
+  [ 'Evil Ninja',       14,     3,    2,    1 ],
+  [ 'Zappy Drones',     1,      5,    5,    1 ],
+  [ 'Chaingun',         7,      5,    1,    1 ],
+  [ 'Deadly Balls',     9,      5,    4,    1 ],
+  [ 'Mines',            14,     5,    3,    1 ],
+  [ 'Floorguard',       2,      7,    2,    1 ],
+  [ 'Lasers',           5,      7,    5,    3 ],
+  [ 'Gauss Turret',     11,     7,    3,    3 ],
+  [ 'Rocket Turret',    15,     6.5,  10,   2 ],
+  [ 'Gold',             13.75,  9,    2.5,  2 ],
+  [ 'Ninjas',           1,      10,   4,    1 ],
+  [ 'Ninja Effects',    16.5,   9,    9,    2 ],
+  [ 'Ninja Effects',    19,     1,    6,    5 ],
+
+]
+
+
 interface Props {
-  setSectionIdx: (i: number) => void;
-  setItemIdx: (i: number) => void;
   colors: { [index: string]: string[] };
 }
 
 export default function ObjectsPreview({
   colors,
-  setSectionIdx,
-  setItemIdx
 }: Props) {
   const cssVars = {
     '--tiles':                colors.background[0],
@@ -95,15 +118,15 @@ export default function ObjectsPreview({
     '--challenge-complete':   colors.menu[10],
   }
 
-  return <div className={styles.objectsPreview} style={cssVars as React.CSSProperties}>
-    <div className={styles.timeBars}>
+  return <PreviewLink className={styles.objectsPreview} menu='Background' style={cssVars as React.CSSProperties}>
+    <PreviewLink className={styles.timeBars} menu='Time Bar'>
       <Tab type='timebar' className={styles.timeBarA} text='52.617++10.00' />
       <Tab type='timebar' className={styles.timeBarB} />
       <Tab type='timebar' className={styles.timeBarC} />
-    </div>
+    </PreviewLink>
     <div className={styles.objects}>
       {
-        coordinates.map(([ objectName, x, y ]) => {
+        objectCoordinates.map(([ objectName, x, y ]) => {
           const style = {
             position: 'absolute',
             left: 44 * x,
@@ -117,11 +140,23 @@ export default function ObjectsPreview({
           />
         })
       }
+      {
+        hoverCoordinates.map(([ menu, x, y, width, height ], i) => {
+          const style = {
+            position: 'absolute',
+            left: 44 * x,
+            top: 44 * y,
+            width: 44 * width,
+            height: 44 * height
+          }
+          return <PreviewLink key={i} style={style} menu={menu} />
+        })
+      }
     </div>
-    <div className={styles.lowerText}>
+    <PreviewLink className={styles.lowerText} menu='Objects Lower Text'>
       <span className={styles.levelID}>Solo Level A-01-03</span>
       <span className={styles.challenges}>[!!] G++???    <span className={styles.brackets}>[???]</span> G--T--C++</span>
       <span className={styles.title}>level name ^_^</span>
-    </div>
-  </div>
+    </PreviewLink>
+  </PreviewLink>
 }

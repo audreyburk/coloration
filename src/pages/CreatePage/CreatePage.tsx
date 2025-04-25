@@ -2,48 +2,32 @@
 import { useThrottledCallback } from 'use-debounce'
 import { useState } from 'react'
 
-// is specifying type important? it's ugly. maybe multiline?
-import { type Item, type Section, type Field } from './createPageTypes'
-
 // data files, big consts
 import fileData from './data/fileData'
-import sectionData from './data/sectionData'
+import menus from './data/menus'
 import defaultColors from './data/defaultColors'
+
+import { CurrentMenuContext } from './CurrentMenuContext'
 
 import { loadPalette, createPalette } from './utils/script'
 
-import Preview from './components/Preview'
 import ColorField from './components/ColorField'
+import Preview from './components/Preview'
 
 import styles from './createPage.module.css'
 
 
-// THINGS ARE VERY BROKEN
+// TODO: THINGS ARE VERY BROKEN
 // sometimes selecting entities changes one of their colors
 // maybe a problem with keys in the inputs?
 // need to redo this system anyway
 
-// normalize capitalization in inputs
 
 export default function CreatePage() {
   const [ colors, setColors ] = useState(defaultColors)
-  const [ sectionIdx, setSectionIdx ] = useState(0)
-  const [ itemIdx, setItemIdx ] = useState(0)
+  const [ currentMenu, setCurrentMenu ] = useState('Background')
   // const [ fieldIdx, setFieldIdx ] = useState(0)
-  const [ canvasType, setCanvasType ] = useState('objects') // objects ingame editor leaderboard
-
-  const items = sectionData[sectionIdx].items
-  const { fileName } = items[itemIdx]
-  const indices = items[itemIdx].indices || fileData[fileName].map((_f, i) => i)
-
-  function handleSectionClick(index: number) {
-    setSectionIdx(index)
-    setItemIdx(0)
-  }
-
-  function handleItemClick(index: number) {
-    setItemIdx(index)
-  }
+  const [ canvasType, setCanvasType ] = useState('objects') // objects ingame editor leaderboard levels menus
 
   function handleUpload(e: any) {
     loadPalette(e.target.files)
@@ -54,34 +38,35 @@ export default function CreatePage() {
   }
 
   function handleDownloadClick() {
-    const newThing = canvasType === 'objects' ? 'editor' : 'objects'
-    // setCanvasType(newThing)
     console.log(colors)
-    // createPalette(colors)
+    createPalette(colors)
   }
 
-  function handleColorSelect(color: string, i: number) {
-    // here's the problem. the index does not necessaryily match the destination index
-    // so do we change that here, or on palette creation? i think it's already broken on palette load?
-    // noooooo it should be fiiiiiiine
-    // right, it's not broken on palette load, it's broken in how it renders the fields? maybe?
+  function handleColorSelect(color: string, fileName: string, i: number) {
     setColors({
       ...colors,
       [fileName]: [
         ...colors[fileName].slice(0, i),
-        color,
+        color.toUpperCase(),
         ...colors[fileName].slice(i + 1)
       ]
     })
   }
 
-  const handleColorSelectThrottled = useThrottledCallback((color: string, index: number) => {
-    return handleColorSelect(color, index)
+  const handleColorSelectThrottled = useThrottledCallback((color: string, fileName: string, index: number) => {
+    return handleColorSelect(color, fileName, index)
   }, 50, { leading: true })
-
 
   return (
     <main>
+      <CurrentMenuContext value={setCurrentMenu}>
+        <div className={styles.previews} style={{ backgroundColor: colors.menu[0] }}>
+          <Preview
+            colors={colors}
+            canvasType={canvasType}
+          />
+        </div>
+      </CurrentMenuContext>
       <div>
         <button onClick={() => setCanvasType('objects')}>Objects</button>
         <button onClick={() => setCanvasType('leaderboard')}>Leaderboard</button>
@@ -91,49 +76,30 @@ export default function CreatePage() {
         <button onClick={() => setCanvasType('menu')}>Menu</button>
         <button onClick={() => setCanvasType('unknown')}>Unknown</button>
       </div>
-      <div className={styles.previews} style={{ backgroundColor: colors.menu[0] }}>
-        <Preview
-          colors={colors}
-          setItemIdx={setItemIdx}
-          setSectionIdx={setSectionIdx}
-          canvasType={canvasType}
-        />
-      </div>
       <div className={styles.rowOne}>
         <ul className={styles.sectionList}>
           {
-            sectionData.map(({ name }: Section, i: number) => {
-              const className = (i === sectionIdx)
-                ? styles.sectionItem + " " + styles.sectionItem__active
-                : styles.sectionItem
-              return <li key={name} className={className} onClick={() => handleSectionClick(i)}>
-                <span>{ name }</span>
-              </li>
+            Object.keys(menus).map(key => {
+              return <li
+                key={key}
+                className={styles.sectionItem}
+                onClick={() => setCurrentMenu(key)}
+              >{ key }</li>
             })
           }
         </ul>
-        {/* probably just for mobile */}
-        <ul key={`section_${sectionIdx}`} className={styles.itemList}>
-          {
-            items.map(({ label }: Item, i: number) => {
-              const className = (i === itemIdx)
-                ? styles.itemItem + " " + styles.itemItem__active
-                : styles.itemItem
-              return <li key={label} className={className}>
-                <span onClick={() => handleItemClick(i)}>{label}</span>
-              </li>
-            })
-          }
-        </ul>
+        <div>{ currentMenu }</div>
         <ul className={styles.fileList}>
           {
-            indices.map(i => {
-              const { text } = fileData[fileName][i]
+            menus[currentMenu].map(field => {
+              const { fileName, index, description, space } = field
+              const text = description || fileData[fileName][index].text
+              console.log(space) // TODO: insert class name for spacing
               return <ColorField
-                key={"field_" + i}
-                hex={colors[fileName][i]}
+                key={"field_" + fileName + index}
+                hex={colors[fileName][index]}
                 text={text}
-                onChange={color => handleColorSelectThrottled(color, i)}
+                onChange={color => handleColorSelectThrottled(color, fileName, index)}
               />
             })
           }

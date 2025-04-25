@@ -9,7 +9,7 @@ button {
   position: relative;
   width: calc(100% + 72px);
   margin-left: -36px;
-  cursor: default;
+  /* cursor: default; */
   user-select: none;
 
   font-family: Sys;

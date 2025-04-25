@@ -1,23 +1,21 @@
 import episodeGridData from '../../../data/episodeGridData'
 import leaderboardData from '../../../data/leaderboardData'
-import Tab from '../../../../../components/Tab'
+import Tab from './Tab'
+
+import PreviewLink from './PreviewLink'
 
 import styles from './leaderboardEpisodeGridPreview.module.css'
 
-// we still need to add the bottom text!!!!!
-
+// TODO: we still need to add the bottom text!!!!!
 // TODO: add the little brackets on the levels at the bottom
+// TODO: move the big header from Levels to here & add the Player 2 Ready stuff
 
 interface Props {
-  setSectionIdx: (i: number) => void;
-  setItemIdx: (i: number) => void;
   colors: { [index: string]: string[] };
 }
 
 export default function LeaderboardEpisodesGridPreview({
   colors,
-  // setSectionIdx,
-  // setItemIdx
 }: Props) {
   const cssVars = {
     '--grid-tab-background':                  colors.menu[8],

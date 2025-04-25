@@ -6,6 +6,8 @@ import { useEffect, useRef } from 'react'
 
 import { drawEntity, renderSprite } from '../../../utils/drawSprites'
 
+import PreviewLink from './PreviewLink'
+
 import arrow from './arrow.png?inline'
 import editorOutline from './editorOutline.png?inline'
 
@@ -22,8 +24,6 @@ editorOutlineImg.src = editorOutline
 // maybe even the editor browse menu
 
 interface Props {
-  setSectionIdx: (i: number) => void;
-  setItemIdx: (i: number) => void;
   colors: { [index: string]: string[] };
 }
 
@@ -143,7 +143,7 @@ export default function InGamePreview({
       <span>Player 3 - Ready</span>
       <span>Player 4 - Ready</span>
     </div> */}
-    <div className={styles.background}>
+    <PreviewLink className={styles.background} menu='Background'>
       <div className={styles.gridFine} />
       <div className={styles.gridWide} />
       <div className={styles.blockA} />
@@ -182,7 +182,7 @@ export default function InGamePreview({
           width={250}
           height={250}
         />
-        <div className={styles.circle} />
+        <PreviewLink className={styles.circle} menu='Exit' />
         <div className={styles.keys}>
           {
             keys.map(row => <div key={row[0]}>
@@ -191,16 +191,16 @@ export default function InGamePreview({
           }
         </div>
       </div>
-      <div className={styles.lineBox}>
+      <PreviewLink className={styles.lineBox} menu='Trap Door'>
         <div className={styles.line} />
-      </div>
-      <div className={styles.cursor}>
-        <div className={styles.cursorA}></div>
-        <div className={styles.cursorB}></div>
-        <div className={styles.cursorC}></div>
-        <div className={styles.cursorD}></div>
-      </div>
-    </div>
+      </PreviewLink>
+      <PreviewLink className={styles.cursor} menu='Locked Door'>
+        <div className={styles.cursorA} />
+        <div className={styles.cursorB} />
+        <div className={styles.cursorC} />
+        <div className={styles.cursorD} />
+      </PreviewLink>
+    </PreviewLink>
     <div className={styles.text}>
       <span className={styles.editMode}>Edit Mode Modify Region</span>
       <span className={styles.levelName}>[Unset Game Mode] Untitled-132</span>
