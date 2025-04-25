@@ -1,6 +1,7 @@
 
-import Tab from './Tab'
-import Level from './Level'
+import Level        from './Level'
+import PreviewLink  from './PreviewLink'
+import Tab          from './Tab'
 
 import styles from './levelsPreview.module.css'
 
@@ -52,22 +53,24 @@ export default function LevelsPreview({
     '--level-info':                     colors.menu[35],
   }
 
-  return <div className={styles.levels} style={cssVars as React.CSSProperties}>
+  return <PreviewLink className={styles.levels} style={cssVars as React.CSSProperties} menu='Menu Background'>
     <div className={styles.header}>
       N++{'>'}Solo{'>'}Levels
     </div>
-    <div className={styles.tabs}>
-      <Tab text='Intro' />
-      <Tab text='N++' />
-      <Tab text='Hard' />
-      <Tab text='Made By Me' />
-      <Tab text='Legacy' />
-    </div>
-    <div className={styles.subTabs}>
-      <Tab text='++s' />
-      <Tab text='By Date' />
-    </div>
-    <div className={styles.body}>
+    <PreviewLink menu='Levels Tabs'>
+      <div className={styles.tabs}>
+        <Tab text='Intro' />
+        <Tab text='N++' />
+        <Tab text='Hard' />
+        <Tab text='Made By Me' />
+        <Tab text='Legacy' />
+      </div>
+      <div className={styles.subTabs}>
+        <Tab text='++s' />
+        <Tab text='By Date' />
+      </div>
+    </PreviewLink>
+    <PreviewLink className={styles.body} menu='Levels'>
       <div className={styles.arrowA} />
       <div className={styles.arrowB} />
       <div className={styles.bar} />
@@ -109,13 +112,13 @@ export default function LevelsPreview({
           [!!] G++???   <span>[?]</span> G--   <span>[??]</span> T--C--
         </div>
       </div>
-      <div className={styles.bottomText}>
-        <span className={styles.prev}>Prev Tab</span>
-        <span className={styles.next}>Next Tab</span>
-        <span className={styles.back}>Back</span>
-        <span className={styles.view}>View Replays</span>
-        <span className={styles.search}>Search</span>
-      </div>
-    </div>
-  </div>
+    </PreviewLink>
+    <PreviewLink className={styles.bottomText} menu='Bottom Text'>
+      <span className={styles.prev}>Prev Tab</span>
+      <span className={styles.next}>Next Tab</span>
+      <span className={styles.back}>Back</span>
+      <span className={styles.view}>View Replays</span>
+      <span className={styles.search}>Search</span>
+    </PreviewLink>
+  </PreviewLink>
 }

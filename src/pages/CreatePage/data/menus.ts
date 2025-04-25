@@ -191,6 +191,7 @@ export const menus: {
     },
     { fileName: 'menu',           index: 23 },
     { fileName: 'entityDoorExit', index: 6 },
+    { fileName: 'menu',           index: 22 },
   ],
   'Leaderboard': [
     { fileName: 'menu', index: 1 },
@@ -210,6 +211,24 @@ export const menus: {
     { fileName: 'menu', index: 4 },
   ],
 
+  // Levels
+  'Levels Tabs': [
+    { fileName: 'menu', index: 8 },
+    { fileName: 'menu', index: 31 },
+    { fileName: 'menu', index: 12 },
+    { fileName: 'menu', index: 33, space: true },
+    { fileName: 'menu', index: 37 },
+  ],
+  'Levels': [
+    { fileName: 'menu', index: 35 },
+    { fileName: 'timeBarRace', index: 0 },
+    { fileName: 'timeBarRace', index: 1 },
+    { fileName: 'entityDoorExit', index: 7 },
+    { fileName: 'menu', index: 22 },
+  ],
+  'Bottom Text': [
+    { fileName: 'menu', index: 24 },
+  ],
 }
 
 export default menus

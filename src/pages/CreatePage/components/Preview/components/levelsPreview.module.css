@@ -130,6 +130,7 @@
   padding-top: 37px;
   text-align: center;
   font-size: 30px;
+  color: var(--level-info);
 }
 
 .cursor div {
@@ -194,6 +195,7 @@
 
 .bottomText {
   margin-top: 40px;
+  margin-left: 60px;
   font-size: 22px;
   color: var(--bottom-text);
 }
