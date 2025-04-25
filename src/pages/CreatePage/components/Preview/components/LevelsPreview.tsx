@@ -78,12 +78,11 @@ export default function LevelsPreview({
               {
                 row.map((level, n) => {
                   const [ title, brackets, fav ] = level
-                  return <div key={n} className={styles.level}>
-                    <Level type='small' />
+                  return <Level key={n} className={styles.level} type='small'>
                     { fav && <span className={styles.fav}>++</span>}
                     <span className={styles.brackets}>{ brackets }</span>
                     <span className={styles.title}>{ title }</span>
-                  </div>
+                  </Level>
                 })
               }
             </div>

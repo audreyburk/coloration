@@ -8,15 +8,20 @@ interface Props {
   hex: string;
   text: string;
   onChange: (newColor: string) => void;
+  className?: string;
 }
 
-export default function ColorField({ hex, text, onChange }: Props) {
+export default function ColorField({ hex, text, onChange, className }: Props) {
   const color = Color(hex)
   const textColor = color.isLight()
     ? '#000'
     : '#FFF'
 
-  return <li className={styles.field}>
+  const cn = className
+    ? styles.field + ' ' + className
+    : styles.field
+
+  return <li className={cn}>
     <HexColorInput
       className={styles.input}
       style={{

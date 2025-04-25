@@ -94,12 +94,13 @@ export default function CreatePage() {
             menus[currentMenu].map(field => {
               const { fileName, index, description, space } = field
               const text = description || fileData[fileName][index].text
-              console.log(space) // TODO: insert class name for spacing
+              const className = space ? styles.fieldSpace : undefined
               return <ColorField
                 key={"field_" + fileName + index}
                 hex={colors[fileName][index]}
                 text={text}
                 onChange={color => handleColorSelectThrottled(color, fileName, index)}
+                className={className}
               />
             })
           }

@@ -23,9 +23,9 @@ export const menus: {
   ],
   'Exit Switch': [
     { fileName: 'entityDoorExitSwitch', index: 0 },
-    { fileName: 'entityDoorExitSwitch', index: 3 },
+    { fileName: 'entityDoorExitSwitch', index: 3, space: true },
     { fileName: 'entityDoorExitSwitch', index: 1 },
-    { fileName: 'entityDoorExitSwitch', index: 4 },
+    { fileName: 'entityDoorExitSwitch', index: 4, space: true },
     { fileName: 'entityDoorExitSwitch', index: 2 },
   ],
   'Normal Door': [
@@ -124,7 +124,7 @@ export const menus: {
   ],
   'Gauss Turret': [
     { fileName: 'entityTurret', index: 0 },
-    { fileName: 'entityTurret', index: 1 },
+    { fileName: 'entityTurret', index: 1, space: true },
     { fileName: 'entityTurret', index: 2 },
     { fileName: 'entityTurret', index: 3 },
     { fileName: 'entityTurret', index: 4 },
@@ -168,25 +168,48 @@ export const menus: {
   ],
 
   // Leaderboard + Episodes
+  'Menu Background' : [
+    { fileName: 'menu', index: 0 },
+  ],
+  'Main Tabs' : [
+    { fileName: 'menu', index: 8 },
+    { fileName: 'menu', index: 31 },
+    { fileName: 'menu', index: 12 },
+    { fileName: 'menu', index: 33 },
+  ],
   'Episode Grid': [
+    { fileName: 'menu',           index: 9 },
+    { fileName: 'menu',           index: 7 },
+    { fileName: 'menu',           index: 30 },
     {
       fileName: 'menu',
-      index: 0,
-      description: // we can make descriptions optional and only override fileNameData if it's present. seems most sensible.
+      index: 5,
+      description:
         'Uncompleted episode background.' + '\n' +
-        'ProfileName: Uncompleted episode.' + '\n' +
-        'Editor: Level name when not being played. (show)'
+        'Profile: Uncompleted episode.' + '\n' +
+        'Editor: Level name when not being played. (show) im not even sure this is all accurate, check'
     },
-    // null,
-    {
-      fileName: 'menu',
-      index: 1,
-      // description:
-      //   'Uncompleted episode background.' + '\n' +
-      //   'ProfileName: Uncompleted episode.' + '\n' +
-      //   'Editor: Level name when not being played. (show)'
-    },
-  ]
+    { fileName: 'menu',           index: 23 },
+    { fileName: 'entityDoorExit', index: 6 },
+  ],
+  'Leaderboard': [
+    { fileName: 'menu', index: 1 },
+    { fileName: 'menu', index: 16 },
+    { fileName: 'menu', index: 2 },
+    { fileName: 'menu', index: 13 },
+    { fileName: 'menu', index: 32 },
+  ],
+  'Leaderboard Tabs': [
+    { fileName: 'menu', index: 25 },
+    { fileName: 'menu', index: 26 },
+    { fileName: 'menu', index: 27 },
+  ],
+  'Episode Details': [
+    { fileName: 'menu', index: 35 },
+    { fileName: 'menu', index: 10 },
+    { fileName: 'menu', index: 4 },
+  ],
+
 }
 
 export default menus

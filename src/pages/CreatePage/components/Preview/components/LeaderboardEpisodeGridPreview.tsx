@@ -1,8 +1,9 @@
 import episodeGridData from '../../../data/episodeGridData'
 import leaderboardData from '../../../data/leaderboardData'
-import Tab from './Tab'
 
-import PreviewLink from './PreviewLink'
+import Level        from './Level'
+import PreviewLink  from './PreviewLink'
+import Tab          from './Tab'
 
 import styles from './leaderboardEpisodeGridPreview.module.css'
 
@@ -33,6 +34,8 @@ export default function LeaderboardEpisodesGridPreview({
     '--tiles':                                colors.background[0],
     '--outline':                              colors.background[1],
     '--episode-information':                  colors.menu[35],
+    '--deathless':                            colors.menu[10],
+    '--deathless-time':                       colors.menu[4],
     '--leaderboard-background':               colors.menu[1],
     '--leaderboard-ranks':                    colors.menu[16],
     '--leaderboard-scores':                   colors.menu[2],
@@ -43,14 +46,14 @@ export default function LeaderboardEpisodesGridPreview({
     '--leaderboard-tab-text':                 colors.menu[27],
   }
 
-  return <div className={styles.leaderboard} style={cssVars as React.CSSProperties}>
+  return <PreviewLink className={styles.leaderboard} style={cssVars as React.CSSProperties} menu='Menu Background'>
     <div className={styles.grid}>
-      <div className={styles.gridTabs}>
+      <PreviewLink className={styles.gridTabs} menu='Main Tabs'>
         <Tab text='Intro' />
         <Tab text='N++' className={styles.gridTabSelected} />
         <Tab text='Legacy' />
-      </div>
-      <div className={styles.episodeGrid}>
+      </PreviewLink>
+      <PreviewLink className={styles.episodeGrid} menu='Episode Grid'>
         {
           episodeGridData.map((row, i) => {
             return <div className={styles.episodeRow} key={i}>
@@ -65,15 +68,20 @@ export default function LeaderboardEpisodesGridPreview({
             </div>
           })
         }
-      </div>
-      <div className={styles.episodeDetail}>
+      </PreviewLink>
+      <PreviewLink className={styles.episodeDetail} menu='Episode Details'>
         <span className={styles.episodeTitle}>Episode B-05</span>
-        <div className={styles.levelA} />
-        <div className={styles.levelB} />
-        <span className={styles.episodeInfo}>Success: 1/24    {'>'}    Gold Collected: 50/50</span>
-      </div>
+        <Level className={styles.level}>
+          <span className={styles.levelBrackets}>[]</span>
+        </Level>
+        <Level className={styles.level}>
+          <span className={styles.levelBrackets}>[!?]</span>
+        </Level>
+        <span className={styles.deathless}>N++ <span className={styles.deathlessTime}>91.583</span></span>
+        <span className={styles.episodeInfo}>Gold Collected: 50/50</span>
+      </PreviewLink>
     </div>
-    <div className={styles.scoreboard}>
+    <PreviewLink className={styles.scoreboard} menu='Leaderboard'>
       <div className={styles.scores}>
         {
           leaderboardData.map((row, i) => {
@@ -87,11 +95,11 @@ export default function LeaderboardEpisodesGridPreview({
           })
         }
       </div>
-      <div className={styles.scoreboardTabs}>
+      <PreviewLink className={styles.scoreboardTabs} menu='Leaderboard Tabs'>
         <Tab text='Global Highscores' className={styles.tabGlobalScores} />
         <Tab text='Mine' className={styles.tabMyScores} />
         <Tab text='Speedrun' className={styles.tabSpeedrun} />
-      </div>
-    </div>
-  </div>
+      </PreviewLink>
+    </PreviewLink>
+  </PreviewLink>
 }

@@ -79,15 +79,15 @@ export const objects: { [index: string]: Field[] } = {
     { text: 'Uncompleted episode background (see 8). Profile: Uncompleted episode. Editor: Level name when not being played.' },
     { text: '?' },
     { text: 'Completed episode background (see 6). Profile: Completed episode.' },
-    { text: 'Episode tabs background, unselected (see 13).' },
+    { text: 'Episode tabs background, unselected (see 13). + userlevel' },
     { text: 'Episode box outline (see 33).' },
-    { text: 'Main menu: Text, selected (see 5). Logo color. Cursor color. Also, completed challenges (brackets) when playng the level (see 5, also see timeBarRace 1 and 2).' },
+    { text: 'Main menu: Text, selected (see 5). Logo color. Cursor color. Also, completed challenges (brackets) when playing the level (see 5, also see timeBarRace 1 and 2).' },
     { text: '?' },
-    { text: 'Episode tabs background, selected (see 9).' },
+    { text: 'Episode tabs background, selected (see 9).+ userlevel' },
     { text: 'Leaderboards: Other player´s names, your score (see 3, 17). Profile: Header text in side panel (see 15, 16).' },
     { text: 'Profile: Numbers and some text (see 14, 16). Options: Unselected text, scrollbar triangles, upper dividing line. Credits: Regular text. Story: Upper dividing line.' },
     { text: 'Profile: Remaining text and percentages (see 14, 15). Story: Text. Options: Selected text, little bar in scrollbar. Credits: Header text.' },
-    { text: 'Leaderboards: Other player´s ranks, your name (see 3, 14). Also, messages that appear in the leaderboard (\'Server error\', \'Player 2 needed for score submission\', race options header, etc). Profile: Death count bars. Editor: Header text in side panel, messages when publishing, naming, etc.' },
+    { text: 'Leaderboards: Other player´s ranks, your name (see 3, 14). Also, messages that appear in the leaderboard (\'Server error\', \'Player 2 needed for score submission\', race options header, etc). Profile: Death count bars. Editor: Header text in side panel, messages when publishing, naming, etc. (not sure the editor stuff is true. maybe just the side panels)' },
     { text: '\'Color / Music\' and \'Social\' menus header text (see 30). The other text is the same, but more transparent.' },
     { text: 'Pause menu and editor panels unselected text (see 20).' },
     { text: 'Pause menu and editor panels selected text (see 19).' },
@@ -261,11 +261,11 @@ export const objects: { [index: string]: Field[] } = {
   ],
 
   entityTurret: [
-    { text: 'Gauss turret center dot.', sprite: '13-0.png' },
-    { text: 'Gauss turret exterior.', sprite: '13-1.png' },
-    { text: 'Gauss turret crosshairs.' },
-    { text: 'Gauss turret bullet.' },
-    { text: 'Gauss turret squiggly lines.' }
+    { text: 'Turret center dot.', sprite: '13-0.png' },
+    { text: 'Turret exterior.', sprite: '13-1.png' },
+    { text: 'Crosshairs.' },
+    { text: 'Bullet.' },
+    { text: 'Squiggly lines.' }
   ],
 
   entityThwomp: [

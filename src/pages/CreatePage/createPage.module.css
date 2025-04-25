@@ -87,6 +87,10 @@ button {
   /* margin-left: 100px; */
 }
 
+.fieldSpace {
+  margin-bottom: 20px;
+}
+
 .swatches {
   flex: 1;
 }
