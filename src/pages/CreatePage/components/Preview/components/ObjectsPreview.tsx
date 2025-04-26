@@ -153,7 +153,7 @@ export default function ObjectsPreview({
         })
       }
     </div>
-    <PreviewLink className={styles.lowerText} menu='Objects Lower Text'>
+    <PreviewLink className={styles.lowerText} menu='In Game Lower Text'>
       <span className={styles.levelID}>Solo Level A-01-03</span>
       <span className={styles.challenges}>[!!] G++???    <span className={styles.brackets}>[???]</span> G--T--C++</span>
       <span className={styles.title}>level name ^_^</span>

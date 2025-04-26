@@ -77,17 +77,6 @@ export default function CreatePage() {
         <button onClick={() => setCanvasType('unknown')}>Unknown</button>
       </div>
       <div className={styles.rowOne}>
-        <ul className={styles.sectionList}>
-          {
-            Object.keys(menus).map(key => {
-              return <li
-                key={key}
-                className={styles.sectionItem}
-                onClick={() => setCurrentMenu(key)}
-              >{ key }</li>
-            })
-          }
-        </ul>
         <div>{ currentMenu }</div>
         <ul className={styles.fileList}>
           {

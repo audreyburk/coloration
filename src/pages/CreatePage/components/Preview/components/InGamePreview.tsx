@@ -1,5 +1,6 @@
 // import episodeGridData from '../../../data/episodeGridData'
 // import leaderboardData from '../../../data/leaderboardData'
+import PreviewLink from './PreviewLink';
 import Tab from './Tab'
 
 import styles from './inGamePreview.module.css'
@@ -47,67 +48,73 @@ export default function InGamePreview({
 
   return <div className={styles.inGamePreview} style={cssVars as React.CSSProperties}>
     <div className={styles.timeBars}>
-      <div className={styles.timeBar1}>
+      <PreviewLink className={styles.timeBar1} menu='Race Time Bar: P1'>
         <Tab type='racebar' className={styles.timeBar1A} />
         <Tab type='racebar' className={styles.timeBar1B} interior={true} />
         <Tab type='racebar' className={styles.timeBar1C} interior={true} />
         <span>132.317 ++48.917</span>
-      </div>
-      <div className={styles.timeBar2}>
+      </PreviewLink>
+      <PreviewLink className={styles.timeBar2} menu='Race Time Bar: P2'>
         <Tab type='racebar' className={styles.timeBar2A} />
         <Tab type='racebar' className={styles.timeBar2B} interior={true} />
         <Tab type='racebar' className={styles.timeBar2C} interior={true} />
         <span>132.317 ++48.917</span>
-      </div>
-      <div className={styles.timeBar3}>
+      </PreviewLink>
+      <PreviewLink className={styles.timeBar3} menu='Race Time Bar: P3'>
         <Tab type='racebar' className={styles.timeBar3A} />
         <Tab type='racebar' className={styles.timeBar3B} interior={true} />
         <Tab type='racebar' className={styles.timeBar3C} interior={true} />
         <span>132.317 ++48.917</span>
-      </div>
-      <div className={styles.timeBar4}>
+      </PreviewLink>
+      <PreviewLink className={styles.timeBar4} menu='Race Time Bar: P4'>
         <Tab type='racebar' className={styles.timeBar4A} />
         <Tab type='racebar' className={styles.timeBar4B} interior={true} />
         <Tab type='racebar' className={styles.timeBar4C} interior={true} />
         <span>132.317 ++48.917</span>
-      </div>
+      </PreviewLink>
     </div>
     <div className={styles.background} />
-    <div className={styles.completed}>Your Global Rank: 12</div>
-    <div className={styles.oops}>Oops.</div>
-    <div className={styles.pauseOuter}>
-      <div className={styles.pauseOutline}>
-        <div className={styles.pause}>
-          <div className={styles.pausePaused}>Paused</div>
-          <div className={styles.pauseResume}>Resume</div>
-          <div className={styles.pauseRetry}>Retry</div>
-          <div>Quit</div>
+    <PreviewLink className={styles.completed} menu='In Game Messages'>Your Global Rank: 12</PreviewLink>
+    <PreviewLink className={styles.oops} menu='In Game Messages'>Oops.</PreviewLink>
+    <PreviewLink className={styles.pauseContainer} menu='Pause Menu'>
+      <div className={styles.pauseOuter}>
+        <div className={styles.pauseOutline}>
+          <div className={styles.pause}>
+            <div className={styles.pausePaused}>Paused</div>
+            <div className={styles.pauseResume}>Resume</div>
+            <div className={styles.pauseRetry}>Retry</div>
+            <div>Quit</div>
+          </div>
         </div>
       </div>
-    </div>
-    <div className={styles.lshift}>LSHIFT</div>
-    <div className={styles.text}>
+    </PreviewLink>
+    <PreviewLink className={styles.lshiftContainer} menu='Shift Menus'>
+      <div className={styles.lshift}>LSHIFT</div>
+    </PreviewLink>
+    <PreviewLink className={styles.text} menu='In Game Lower Text'>
       <span className={styles.name}>Solo Level C-13-04          </span>
       <span className={styles.challenges}>
         <span className={styles.challengeComplete}>[!]</span> G--     [??] G++???
       </span>
-    </div>
-    <div className={styles.social}>
-      <div className={styles.socialSocial}>
-        <span>Social</span>
+    </PreviewLink>
+    <PreviewLink className={styles.socialContainer} menu='Shift Menus'>
+      <div className={styles.social}>
+        <div className={styles.socialSocial}>
+          <span>Social</span>
+        </div>
+        <div className={styles.socialFavourite}>
+          Favourite++: <span>velvet curl</span>
+        </div>
+        <div className={styles.socialFollow}>
+          Follow: <span>Audrey Burk</span>
+        </div>
+        <div className={styles.socialTrack}>
+          Track: <span>velvet curl</span>
+        </div>
+        <div className={styles.socialSoundtrack}>
+          Soundtrack: <span className={styles.soundtrack}>Function - Isotope</span>
+        </div>
       </div>
-      <div className={styles.socialFavourite}>
-        Favourite++: <span>velvet curl</span>
-      </div>
-      <div className={styles.socialFollow}>
-        Follow: <span>Audrey Burk</span>
-      </div>
-      <div className={styles.socialTrack}>
-        Track: <span>velvet curl</span>
-      </div>
-      <div className={styles.socialSoundtrack}>
-        Soundtrack: <span className={styles.soundtrack}>Function - Isotope</span>
-      </div>
-    </div>
+    </PreviewLink>
   </div>
 }

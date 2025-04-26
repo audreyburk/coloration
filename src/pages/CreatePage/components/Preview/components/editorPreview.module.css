@@ -158,10 +158,6 @@
   padding: 4px;
   transform: rotate(22.6deg);
 }
-.lineBox:hover {
-  background: color-mix(in srgb, var(--outline) 12%, transparent);
-  outline: 5px solid color-mix(in srgb, var(--outline) 12%, transparent);
-}
 
 .line {
   width: 100%;

@@ -131,12 +131,18 @@
   color: var(--oops);
 }
 
-.pauseOuter {
+.pauseContainer {
   position: absolute;
   top: calc(50% - 145px);
   left: 30%;
   width: 272px;
   height: 290px;
+
+}
+
+.pauseOuter {
+  width: 100%;
+  height: 100%;
   padding: 1px;
   background-color: var(--pause-background);
 }
@@ -194,21 +200,26 @@
   margin-bottom: 18px;
 }
 
-.lshift,
-.social {
+.lshiftContainer,
+.socialContainer {
   position: absolute;
   bottom: 0;
-  background-color: var(--social-background);
   color: var(--social-highlight);
   font-size: 30px;
 }
 
-.lshift {
+.lshiftContainer {
   left: 0;
   width: 127px;
   height: 90px;
+}
+
+.lshift {
+  width: 100%;
+  height: 100%;
   padding-top: 41px;
   padding-left: 23px;
+  background-color: var(--social-background);
   clip-path:
     polygon(
       -1px -1px,
@@ -219,13 +230,18 @@
     );
 }
 
-.social {
+.socialContainer {
   right: 0;
   height: 350px;
   width: 500px;
+}
+
+.social {
+  height: 100%;
+  width: 100%;
   padding-top: 6px;
   padding-left: 50px;
-  font-size: 30px;
+  background-color: var(--social-background);
   clip-path:
     polygon(
       46px -1px,

@@ -1,3 +1,4 @@
+import PreviewLink from './PreviewLink';
 import styles from './menuPreview.module.css'
 
 
@@ -40,9 +41,10 @@ export default function MenuPreview({
         <span className={styles.leftSelected}>Co-op</span>
         <span>Race</span>
       </div>
+      <PreviewLink className={styles.leftLink} menu='Main Menu' />
     </div>
-    <div className={styles.right}>
-      <div className={styles.stats}>
+    <PreviewLink className={styles.right} menu='Menu Background'>
+      <PreviewLink className={styles.stats} menu='Profile'>
         <div className={styles.statsRow}>
           <span>Total Time</span>
           <span>60 23:37:21</span>
@@ -62,13 +64,13 @@ export default function MenuPreview({
           <span>13 19:21:48</span>
           <span>(23%)</span>
         </div>
-      </div>
-      <div className={styles.help}>
+      </PreviewLink>
+      <PreviewLink className={styles.help} menu='Help'>
         <div>PLAYER-CONTROLLED ROCKETS</div>
         <div>• When you touch the exit, a rocket will appear</div>
         <div>• Steer the rocket with your controller</div>
         <div>• Rockets are just as hard to control as ninjas</div>
-      </div>
-    </div>
+      </PreviewLink>
+    </PreviewLink>
   </div>
 }

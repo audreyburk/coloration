@@ -20,24 +20,15 @@ arrowImg.src = arrow
 const editorOutlineImg = new Image()
 editorOutlineImg.src = editorOutline
 
-// we should probably add the help panels and alt tile palette as well
+// TODO: we should probably add the help panels and alt tile palette as well
 // maybe even the editor browse menu
 
 interface Props {
   colors: { [index: string]: string[] };
 }
 
-export default function InGamePreview({
-  colors,
-  // setSectionIdx,
-  // setItemIdx
-}: Props) {
-  // do we use a separate useEffect for each lil canvas? seems optimal but tedious
-  // wait we dont need to update their colors lol
-  // one useeffect is good
-  // this is actually a really bad way of drawing the editor outlines, ugh
-  // also bad for multientities, like, oh, say, DOORS
-  // UGHGHGH THIS DATA IS SO CONFUSING I HATE IT ALL
+export default function InGamePreview({ colors }: Props) {
+  // TODO: replace with Sprites
   const goldmineARef =  useRef<HTMLCanvasElement | null>(null)
   const goldmineBRef =  useRef<HTMLCanvasElement | null>(null)
   const exitRef =       useRef<HTMLCanvasElement | null>(null)
@@ -137,19 +128,11 @@ export default function InGamePreview({
   ]
 
   return <div className={styles.editorPreview} style={cssVars as React.CSSProperties}>
-    {/* <div className={styles.coop}>
-      <span>Player 1 - Ready</span>
-      <span>Player 2 - Ready</span>
-      <span>Player 3 - Ready</span>
-      <span>Player 4 - Ready</span>
-    </div> */}
-    <PreviewLink className={styles.background} menu='Background'>
+    <PreviewLink className={styles.background} menu='Editor Grid'>
       <div className={styles.gridFine} />
       <div className={styles.gridWide} />
       <div className={styles.blockA} />
       <div className={styles.blockB} />
-      <div className={styles.selector} />
-      <div className={styles.selection} />
       <canvas
         className={styles.goldmineA}
         ref={goldmineARef}
@@ -174,7 +157,7 @@ export default function InGamePreview({
         width={44}
         height={44}
       />
-      <div className={styles.entities}>
+      <PreviewLink className={styles.entities} menu='Editor Palette'>
         <div className={styles.entitiesBackground} />
         <canvas
           className={styles.entityCanvas}
@@ -182,7 +165,7 @@ export default function InGamePreview({
           width={250}
           height={250}
         />
-        <PreviewLink className={styles.circle} menu='Exit' />
+        <div className={styles.circle} />
         <div className={styles.keys}>
           {
             keys.map(row => <div key={row[0]}>
@@ -190,20 +173,22 @@ export default function InGamePreview({
             </div>)
           }
         </div>
-      </div>
-      <PreviewLink className={styles.lineBox} menu='Trap Door'>
-        <div className={styles.line} />
       </PreviewLink>
-      <PreviewLink className={styles.cursor} menu='Locked Door'>
+      <div className={styles.lineBox}>
+        <div className={styles.line} />
+      </div>
+      <div className={styles.selection} />
+      <PreviewLink className={styles.selector} menu='Editor Selection' />
+      <PreviewLink className={styles.cursor} menu='Editor Selection'>
         <div className={styles.cursorA} />
         <div className={styles.cursorB} />
         <div className={styles.cursorC} />
         <div className={styles.cursorD} />
       </PreviewLink>
     </PreviewLink>
-    <div className={styles.text}>
+    <PreviewLink className={styles.text} menu='Editor Lower Text'>
       <span className={styles.editMode}>Edit Mode Modify Region</span>
       <span className={styles.levelName}>[Unset Game Mode] Untitled-132</span>
-    </div>
+    </PreviewLink>
   </div>
 }

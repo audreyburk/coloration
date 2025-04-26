@@ -161,11 +161,6 @@ export const menus: {
     { fileName: 'timeBar', index: 4 },
     { fileName: 'timeBar', index: 6 },
   ],
-  'Objects Lower Text': [
-    { fileName: 'menu', index: 28 },
-    { fileName: 'menu', index: 4 },
-    { fileName: 'menu', index: 10 },
-  ],
 
   // Leaderboard + Episodes
   'Menu Background' : [
@@ -229,6 +224,84 @@ export const menus: {
   'Bottom Text': [
     { fileName: 'menu', index: 24 },
   ],
+
+  // In Game
+  'Race Time Bar: P1': [
+    { fileName: 'timeBarRace', index: 5 },
+    { fileName: 'timeBarRace', index: 6 },
+    { fileName: 'timeBarRace', index: 7 },
+  ],
+  'Race Time Bar: P2': [
+    { fileName: 'timeBarRace', index: 8 },
+    { fileName: 'timeBarRace', index: 9 },
+    { fileName: 'timeBarRace', index: 10 },
+  ],
+  'Race Time Bar: P3': [
+    { fileName: 'timeBarRace', index: 11 },
+    { fileName: 'timeBarRace', index: 12 },
+    { fileName: 'timeBarRace', index: 13 },
+  ],
+  'Race Time Bar: P4': [
+    { fileName: 'timeBarRace', index: 14 },
+    { fileName: 'timeBarRace', index: 15 },
+    { fileName: 'timeBarRace', index: 16 },
+  ],
+  'In Game Messages': [
+    { fileName: 'menu', index: 35 }, // maybe we can add a Locked status to certain fields
+    { fileName: 'menu', index: 38 },
+  ],
+  'Pause Menu': [
+    { fileName: 'menu', index: 18 },
+    { fileName: 'menu', index: 19 },
+    { fileName: 'menu', index: 20 },
+    { fileName: 'menu', index: 21 },
+    { fileName: 'background', index: 1 }, // or just a note? no, Locked would be good
+  ],
+  'Shift Menus': [
+    { fileName: 'menu', index: 3 },
+    { fileName: 'menu', index: 17 },
+    { fileName: 'menu', index: 29 },
+    { fileName: 'menu', index: 34 },
+  ],
+  'In Game Lower Text': [
+    { fileName: 'menu', index: 28 },
+    { fileName: 'menu', index: 4 },
+    { fileName: 'menu', index: 10 },
+  ],
+  'Editor Grid': [
+    { fileName: 'editor', index: 0 },
+    { fileName: 'editor', index: 2 },
+    { fileName: 'editor', index: 5 },
+  ],
+  'Editor Selection': [
+    { fileName: 'editor', index: 3 },
+    { fileName: 'editor', index: 8 },
+    { fileName: 'editor', index: 7 },
+  ],
+  'Editor Palette': [
+    { fileName: 'entityEyeBat', index: 1 },
+    { fileName: 'editor',       index: 4 },
+    { fileName: 'editor',       index: 6 },
+    { fileName: 'background',   index: 2, description: 'Actual background color. Unlock at your own peril.' },
+  ],
+  'Editor Lower Text': [
+    { fileName: 'menu', index: 5 },
+    { fileName: 'menu', index: 24 },
+  ],
+
+  // Menu
+  'Main Menu': [
+    { fileName: 'menu', index: 4 },
+    { fileName: 'menu', index: 10, space: true },
+  ],
+  'Profile': [
+    { fileName: 'menu', index: 14 },
+    { fileName: 'menu', index: 15, space: true },
+  ],
+  'Help': [
+    { fileName: 'menu', index: 40 },
+    { fileName: 'menu', index: 41 },
+  ]
 }
 
 export default menus
