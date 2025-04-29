@@ -92,7 +92,7 @@ export default function InGamePreview({ colors }: Props) {
         <div className={styles.entityCanvas}>
           {
             entities.map(([ objectName, x, y ], i) => {
-              const style = {
+              const style: React.CSSProperties = {
                 position: 'absolute',
                 left: x,
                 top: y

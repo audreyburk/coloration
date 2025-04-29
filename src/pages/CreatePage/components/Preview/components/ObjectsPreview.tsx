@@ -127,7 +127,7 @@ export default function ObjectsPreview({
     <div className={styles.objects}>
       {
         objectCoordinates.map(([ objectName, x, y ]) => {
-          const style = {
+          const style: React.CSSProperties = {
             position: 'absolute',
             left: 44 * x,
             top: 44 * y
@@ -142,7 +142,7 @@ export default function ObjectsPreview({
       }
       {
         hoverCoordinates.map(([ menu, x, y, width, height ], i) => {
-          const style = {
+          const style: React.CSSProperties = {
             position: 'absolute',
             left: 44 * x,
             top: 44 * y,

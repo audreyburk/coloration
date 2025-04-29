@@ -51,7 +51,7 @@ export default function Sprite(props: Props) {
       layers.map(([ sprite, color, index ]) => {
         const hex = colors[color][index]
         const url = sprites[sprite]
-        const layerStyle = {
+        const layerStyle: React.CSSProperties = {
           width,
           height,
           top: offsetY,
