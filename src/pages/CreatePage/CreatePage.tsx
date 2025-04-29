@@ -27,8 +27,6 @@ const previewKeys = [
   [ 'unknown', 'Unknown' ],
 ]
 
-let fieldToggle = true
-
 export default function CreatePage() {
   const [ colors, setColors ] = useState(defaultColors)
   const [ currentMenu, setCurrentMenu ] = useState('Background')
@@ -99,13 +97,21 @@ export default function CreatePage() {
             color={currentColor}
             onChange={handleColorSelectThrottled}
           />
-          <input
-            type="file"
-            multiple={true}
-            onChange={handleUpload}
-          />
-          <br />
-          <button onClick={handleDownloadClick}>Download Palette</button>
+          <div className={styles.importExport}>
+            <span>Import palette (35 .tga files):</span>
+            <input
+              type="file"
+              multiple={true}
+              className={styles.upload}
+              onChange={handleUpload}
+            />
+            <button
+              className={styles.download}
+              onClick={handleDownloadClick}
+            >
+              Download Palette
+            </button>
+          </div>
         </div>
         <div className={styles.fields}>
           <div className={styles.fieldsTitle}>{ currentMenu }</div>
@@ -114,16 +120,13 @@ export default function CreatePage() {
               menus[currentMenu].map((field, i) => {
                 const { fileName, index, description, space } = field
                 const text = description || fileData[fileName][index]
-                if (space) {
-                  fieldToggle = !fieldToggle
-                }
                 return <ColorField
                   key={"field_" + fileName + index}
                   hex={colors[fileName][index]}
                   text={text}
                   onChange={handleColorSelectThrottled}
                   onFocus={() => setCurrentIndex(i)}
-                  dark={space}
+                  space={space}
                   active={currentIndex == i}
                   setCurrentPreview={setCurrentPreview}
                 />

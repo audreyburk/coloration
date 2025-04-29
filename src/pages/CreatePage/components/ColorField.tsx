@@ -13,11 +13,11 @@ interface Props {
   setCurrentPreview: (name: string) => void;
   className?: string;
   active?: boolean;
-  dark?: boolean;
+  space?: boolean;
 }
 
 export default function ColorField(props: Props) {
-  const { hex, text, onChange, className, onFocus, active, setCurrentPreview, dark } = props
+  const { hex, text, onChange, className, onFocus, active, setCurrentPreview, space } = props
   const color = Color(hex)
   const textColor = color.isLight()
     ? '#000'
@@ -30,8 +30,8 @@ export default function ColorField(props: Props) {
   if (className) {
     cn = cn + ' ' + className
   }
-  if (dark) {
-    cn = cn + ' ' + styles.fieldDark
+  if (space) {
+    cn = cn + ' ' + styles.fieldSpaced
   }
 
   const re = /\<(.*?)\>/g

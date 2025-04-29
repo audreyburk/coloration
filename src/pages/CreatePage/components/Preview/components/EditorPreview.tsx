@@ -6,6 +6,8 @@ import styles from './editorPreview.module.css'
 // TODO: we should probably add the help panels and alt tile palette as well
 // maybe even the editor browse menu
 
+// TODO: outlines shouldn't show in the entity palette
+
   const x = 50
   const a = 0, b = x, c = x * 2, d = x * 3, e = x * 4
   const entities: [ string, number, number ][] = [

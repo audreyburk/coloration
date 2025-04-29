@@ -7,10 +7,6 @@
   list-style-type: none;
 }
 
-/* .fieldActive {
-  background-color: #FFFFFF15;
-} */
-
 .fieldActive:before {
   content: "";
   position: absolute;
@@ -23,12 +19,7 @@
   border-left: 22px solid currentColor;
 }
 
-.fieldSpacer {
-}
-
-.fieldDark {
-  /* background-color: #FFFFFF03;
-  background-color: transparent; */
+.fieldSpaced {
   margin-top: 8px;
 }
 
