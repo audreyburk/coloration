@@ -1,10 +1,10 @@
 import EditorPreview from './components/EditorPreview'
-import EntityPreview from './components/EntityPreview'
 import InGamePreview from './components/InGamePreview'
 import LeaderboardEpisodeGridPreview from './components/LeaderboardEpisodeGridPreview'
 import LevelsPreview from './components/LevelsPreview'
 import MenuPreview from './components/MenuPreview'
 import ObjectsPreview from './components/ObjectsPreview'
+import UnknownPreview from './components/UnknownPreview'
 
 
 // i think we'll end up factoring out this component, actually
@@ -14,21 +14,21 @@ import ObjectsPreview from './components/ObjectsPreview'
 
 interface Props {
   colors: { [index: string]: string[] };
-  canvasType: string; // one of a set, actually
+  currentPreview: string; // one of a set, actually
 }
 
 export default function Preview({
   colors,
-  canvasType
+  currentPreview
 }: Props) {
   return <>
     {/* make sure switching among these doesnt get messy. lack of keys is concerning. */}
-    { canvasType === 'objects' &&     <ObjectsPreview colors={colors} /> }
-    { canvasType === 'editor' &&      <EditorPreview colors={colors} /> }
-    { canvasType === 'ingame' &&      <InGamePreview colors={colors} /> }
-    { canvasType === 'leaderboard' && <LeaderboardEpisodeGridPreview colors={colors} /> }
-    { canvasType === 'levels' &&      <LevelsPreview colors={colors} /> }
-    { canvasType === 'menu' &&        <MenuPreview colors={colors} /> }
-    { canvasType === 'entities' &&    <EntityPreview colors={colors} /> }
+    { currentPreview === 'objects' &&     <ObjectsPreview colors={colors} /> }
+    { currentPreview === 'editor' &&      <EditorPreview colors={colors} /> }
+    { currentPreview === 'ingame' &&      <InGamePreview colors={colors} /> }
+    { currentPreview === 'episodes' &&    <LeaderboardEpisodeGridPreview colors={colors} /> }
+    { currentPreview === 'levels' &&      <LevelsPreview colors={colors} /> }
+    { currentPreview === 'menus' &&       <MenuPreview colors={colors} /> }
+    { currentPreview === 'unknown' &&     <UnknownPreview colors={colors} /> }
   </>
 }

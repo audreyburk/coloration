@@ -22,6 +22,12 @@ button {
 .rowOne {
   display: flex;
   flex-wrap: wrap;
+  margin-top: 22px;
+}
+
+.picker {
+  width: 300px !important;
+  height: 260px !important;
 }
 
 .sectionList {
@@ -81,10 +87,14 @@ button {
   }
 }
 
-.fileList {
-  flex: 5;
-  /* max-width: 60%; */
-  /* margin-left: 100px; */
+.fields {
+  flex: 1 1 0;
+  padding-left: 44px;
+}
+
+.fieldsTitle {
+  font-size: 24px;
+  line-height: 1;
 }
 
 .fieldSpace {

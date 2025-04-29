@@ -57,7 +57,7 @@ export default function LevelsPreview({
     <div className={styles.header}>
       N++{'>'}Solo{'>'}Levels
     </div>
-    <PreviewLink menu='Levels Tabs'>
+    <PreviewLink menu='Tabs and Subtabs'>
       <div className={styles.tabs}>
         <Tab text='Intro' />
         <Tab text='N++' />

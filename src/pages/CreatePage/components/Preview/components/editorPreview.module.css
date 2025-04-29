@@ -79,14 +79,22 @@
 
 .goldmineA {
   position: absolute;
+  display: flex;
   top: 88px;
   left: 308px;
 }
 
 .goldmineB {
   position: absolute;
-  top: 170px;
-  left: 434px;
+  display: flex;
+  top: 176px;
+  left: 440px;
+}
+
+.goldmineOutline {
+  position: absolute;
+  top: 0;
+  left: 22px;
 }
 
 .exit {
@@ -102,10 +110,12 @@
 }
 
 .entities {
-  /* overlay does not affect center tile. ugh lol */
+  /* TODO: overlay does not affect center tile. ugh lol */
   position: absolute;
   top: 208px;
   left: 649px;
+  width: 250px;
+  height: 250px;
   color: var(--keys);
 }
 

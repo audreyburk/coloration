@@ -56,18 +56,30 @@ export const spriteData: {
       [ 'deathball-2.png', 'entityBat', 2 ],
     ]
   },
+  editorArrow: {
+    width: 26,
+    height: 56,
+    layers: [
+      [ 'editor-arrow-0.png', 'editor', 4 ],
+    ]
+  },
+  editorOutline: {
+    width: 88,
+    height: 44,
+    layers: [
+      [ 'editor-outline-0.png', 'editor', 7 ],
+    ]
+  },
   evilNinja: {
     layers: [
       [ 'evil-ninja-0.png', 'entityEvilNinja', 0 ],
     ]
   },
-
   evilNinjaNinja: {
     layers: [
       [ 'evil-ninja-ninja-0.png', 'ninja', 0 ],
     ],
   },
-
   exit: {
     width: 48,
     layers: [
@@ -108,7 +120,6 @@ export const spriteData: {
       [ 'exit-switch-2.png',           'entityDoorExitSwitch', 1 ],
     ]
   },
-
   explosion: {
     width: 372,
     height: 346,
@@ -232,7 +243,6 @@ export const spriteData: {
       [ 'laser-drone-firing-2.png', 'entityDroneLaser', 1 ],
     ]
   },
-
   laserTurret: {
     layers: [
       [ 'laser-turret-0.png', 'entityDualLaser', 0 ],

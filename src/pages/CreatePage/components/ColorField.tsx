@@ -1,4 +1,5 @@
-import { HexColorPicker, HexColorInput } from 'react-colorful'
+import { JSX } from 'react'
+import { HexColorInput } from 'react-colorful'
 import Color from 'color'
 
 
@@ -8,18 +9,38 @@ interface Props {
   hex: string;
   text: string;
   onChange: (newColor: string) => void;
+  onFocus: () => void;
+  setCurrentPreview: (name: string) => void;
   className?: string;
+  active?: boolean;
 }
 
-export default function ColorField({ hex, text, onChange, className }: Props) {
+export default function ColorField(props: Props) {
+  const { hex, text, onChange, className, onFocus, active, setCurrentPreview } = props
   const color = Color(hex)
   const textColor = color.isLight()
     ? '#000'
     : '#FFF'
 
-  const cn = className
-    ? styles.field + ' ' + className
-    : styles.field
+  let cn = styles.field
+  if (active) {
+    cn = cn + ' ' + styles.fieldActive
+  }
+  if (className) {
+    cn = cn + ' ' + className
+  }
+
+  const re = /\<(.*?)\>/g
+  const textItems = text.split(re)
+  const bits: (string | JSX.Element)[] = []
+  textItems.forEach((item, i) => {
+    if (i % 2 == 0) {
+      bits.push(item)
+    } else {
+      const el = <span key={i} onClick={() => setCurrentPreview(item)}>view</span>
+      bits.push(el)
+    }
+  })
 
   return <li className={cn}>
     <HexColorInput
@@ -30,12 +51,10 @@ export default function ColorField({ hex, text, onChange, className }: Props) {
       }}
       color={hex}
       onChange={onChange}
-      />
-    <HexColorPicker
-      className={styles.picker}
-      color={hex}
-      onChange={onChange}
+      onFocus={onFocus}
     />
-    <span className={styles.text}>{ text }</span>
+    <span className={styles.text}>
+      { bits }
+    </span>
   </li>
 }

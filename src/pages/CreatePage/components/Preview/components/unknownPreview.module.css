@@ -1,0 +1,20 @@
+.unknownPreview {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.unknown {
+  display: flex;
+  height: 60px;
+  margin-bottom: 10px;
+}
+
+.unknown:first-child {
+  margin-top: 10px;
+}
+
+.idk {
+  width: 60px;
+  margin-left: 10px;
+}

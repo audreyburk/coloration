@@ -1,6 +1,7 @@
 // import { ColorResult } from 'react-color'
 import { useThrottledCallback } from 'use-debounce'
 import { useState } from 'react'
+import { HexColorPicker, HexColorInput } from 'react-colorful'
 
 // data files, big consts
 import fileData from './data/fileData'
@@ -17,17 +18,19 @@ import Preview from './components/Preview'
 import styles from './createPage.module.css'
 
 
-// TODO: THINGS ARE VERY BROKEN
-// sometimes selecting entities changes one of their colors
-// maybe a problem with keys in the inputs?
-// need to redo this system anyway
-
-
 export default function CreatePage() {
   const [ colors, setColors ] = useState(defaultColors)
   const [ currentMenu, setCurrentMenu ] = useState('Background')
-  // const [ fieldIdx, setFieldIdx ] = useState(0)
-  const [ canvasType, setCanvasType ] = useState('objects') // objects ingame editor leaderboard levels menus
+  const [ currentIndex, setCurrentIndex ] = useState(0)
+  const [ currentPreview, setCurrentPreview ] = useState('objects') // objects ingame editor episodes levels menus
+
+  const { fileName, index } = menus[currentMenu][currentIndex]
+  const currentColor = colors[fileName][index]
+
+  function setMenu(menu: string) {
+    setCurrentIndex(0)
+    setCurrentMenu(menu)
+  }
 
   function handleUpload(e: any) {
     loadPalette(e.target.files)
@@ -42,72 +45,77 @@ export default function CreatePage() {
     createPalette(colors)
   }
 
-  function handleColorSelect(color: string, fileName: string, i: number) {
+  function handleColorSelect(color: string) {
     setColors({
       ...colors,
       [fileName]: [
-        ...colors[fileName].slice(0, i),
+        ...colors[fileName].slice(0, index),
         color.toUpperCase(),
-        ...colors[fileName].slice(i + 1)
+        ...colors[fileName].slice(index + 1)
       ]
     })
   }
 
-  const handleColorSelectThrottled = useThrottledCallback((color: string, fileName: string, index: number) => {
-    return handleColorSelect(color, fileName, index)
+  const handleColorSelectThrottled = useThrottledCallback((color: string) => {
+    return handleColorSelect(color)
   }, 50, { leading: true })
 
   return (
     <main>
-      <CurrentMenuContext value={setCurrentMenu}>
+      <CurrentMenuContext value={setMenu}>
         <div className={styles.previews} style={{ backgroundColor: colors.menu[0] }}>
           <Preview
             colors={colors}
-            canvasType={canvasType}
+            currentPreview={currentPreview}
           />
         </div>
       </CurrentMenuContext>
       <div>
-        <button onClick={() => setCanvasType('objects')}>Objects</button>
-        <button onClick={() => setCanvasType('leaderboard')}>Leaderboard</button>
-        <button onClick={() => setCanvasType('levels')}>Levels</button>
-        <button onClick={() => setCanvasType('ingame')}>In Game</button>
-        <button onClick={() => setCanvasType('editor')}>Editor</button>
-        <button onClick={() => setCanvasType('menu')}>Menu</button>
-        <button onClick={() => setCanvasType('unknown')}>Unknown</button>
+        <button onClick={() => setCurrentPreview('objects')}>Objects</button>
+        <button onClick={() => setCurrentPreview('episodes')}>Episode Grid</button>
+        <button onClick={() => setCurrentPreview('levels')}>Level List</button>
+        <button onClick={() => setCurrentPreview('ingame')}>In Game</button>
+        <button onClick={() => setCurrentPreview('editor')}>Editor</button>
+        <button onClick={() => setCurrentPreview('menus')}>Menu</button>
+        <button onClick={() => setCurrentPreview('unknown')}>Unknown</button>
       </div>
       <div className={styles.rowOne}>
-        <div>{ currentMenu }</div>
-        <ul className={styles.fileList}>
-          {
-            menus[currentMenu].map(field => {
-              const { fileName, index, description, space } = field
-              const text = description || fileData[fileName][index].text
-              const className = space ? styles.fieldSpace : undefined
-              return <ColorField
-                key={"field_" + fileName + index}
-                hex={colors[fileName][index]}
-                text={text}
-                onChange={color => handleColorSelectThrottled(color, fileName, index)}
-                className={className}
-              />
-            })
-          }
-        </ul>
-        <div className={styles.swatches}>
+        <div>
+          <HexColorPicker
+            className={styles.picker}
+            color={currentColor}
+            onChange={handleColorSelectThrottled}
+          />
           <input
             type="file"
             multiple={true}
             onChange={handleUpload}
           />
+          <br />
           <button onClick={handleDownloadClick}>Download Palette</button>
         </div>
-      </div>
-      <div className={styles.aa}>
-        <p className={styles.a}>84.733</p>
-        <p className={styles.b}>84.733</p>
-        <p className={styles.c}>Solo Intro Level A-00-0123 Level</p>
-        <p className={styles.d}>Solo Intro Level A-00-0123 Level</p>
+        <div className={styles.fields}>
+          <div className={styles.fieldsTitle}>{ currentMenu }</div>
+          <ul>
+            {
+              menus[currentMenu].map((field, i) => {
+                const { fileName, index, description, space } = field
+                const text = description || fileData[fileName][index]
+                const className = space ? styles.fieldSpace : undefined
+                return <ColorField
+                  key={"field_" + fileName + index}
+                  hex={colors[fileName][index]}
+                  text={text}
+                  onChange={handleColorSelectThrottled}
+                  onFocus={() => setCurrentIndex(i)}
+                  className={className}
+                  active={currentIndex == i}
+                  setCurrentPreview={setCurrentPreview}
+                />
+              })
+            }
+          </ul>
+        </div>
       </div>
     </main>
   )

@@ -93,14 +93,8 @@ export const menus: {
     { fileName: 'entityBat', index: 0 },
     { fileName: 'entityBat', index: 1 },
     { fileName: 'entityBat', index: 2, space: true },
-    {
-      fileName: 'entityEyeBat', // also editor stuff
-      index: 0
-    },
-    {
-      fileName: 'entityEyeBat',  // also editor stuff
-      index: 1
-    },
+    { fileName: 'entityEyeBat', index: 0 },
+    { fileName: 'entityEyeBat', index: 1 },
   ],
   'Mines': [
     { fileName: 'entityMine', index: 0 },
@@ -134,7 +128,7 @@ export const menus: {
     { fileName: 'entityRocket', index: 1 },
     { fileName: 'entityRocket', index: 2 },
     { fileName: 'entityRocket', index: 3 },
-    { fileName: 'explosions',   index: 0, description: 'Rocket flare.\nAlso: Fine explosion particles. (LINK ME)' },
+    { fileName: 'explosions',   index: 0 },
   ],
   'Ninjas': [
     { fileName: 'ninja',      index: 0 },
@@ -143,8 +137,8 @@ export const menus: {
     { fileName: 'ninja',      index: 3, space: true },
     { fileName: 'headbands',  index: 0 },
     { fileName: 'headbands',  index: 2 },
-    { fileName: 'headbands',  index: 3 },
     { fileName: 'headbands',  index: 4 },
+    { fileName: 'headbands',  index: 6 },
   ],
   'Ninja Effects': [
     { fileName: 'fxNinja',    index: 0 },
@@ -163,10 +157,18 @@ export const menus: {
   ],
 
   // Leaderboard + Episodes
-  'Menu Background' : [
+  'Menu Background': [
     { fileName: 'menu', index: 0 },
   ],
-  'Main Tabs' : [
+  'Ready Players': [
+    { fileName: 'timeBarRace', index: 1 },
+    { fileName: 'headbands',   index: 0 },
+    { fileName: 'timeBarRace', index: 2 }, // should these default to being linked to timebar color?
+    { fileName: 'timeBarRace', index: 3 },
+    { fileName: 'timeBarRace', index: 4 },
+    { fileName: 'timeBarRace', index: 0 },
+  ],
+  'Tabs': [
     { fileName: 'menu', index: 8 },
     { fileName: 'menu', index: 31 },
     { fileName: 'menu', index: 12 },
@@ -176,14 +178,7 @@ export const menus: {
     { fileName: 'menu',           index: 9 },
     { fileName: 'menu',           index: 7 },
     { fileName: 'menu',           index: 30 },
-    {
-      fileName: 'menu',
-      index: 5,
-      description:
-        'Uncompleted episode background.' + '\n' +
-        'Profile: Uncompleted episode.' + '\n' +
-        'Editor: Level name when not being played. (show) im not even sure this is all accurate, check'
-    },
+    { fileName: 'menu',           index: 5 },
     { fileName: 'menu',           index: 23 },
     { fileName: 'entityDoorExit', index: 6 },
     { fileName: 'menu',           index: 22 },
@@ -207,7 +202,7 @@ export const menus: {
   ],
 
   // Levels
-  'Levels Tabs': [
+  'Tabs and Subtabs': [
     { fileName: 'menu', index: 8 },
     { fileName: 'menu', index: 31 },
     { fileName: 'menu', index: 12 },
@@ -215,11 +210,11 @@ export const menus: {
     { fileName: 'menu', index: 37 },
   ],
   'Levels': [
-    { fileName: 'menu', index: 35 },
-    { fileName: 'timeBarRace', index: 0 },
-    { fileName: 'timeBarRace', index: 1 },
+    { fileName: 'menu',           index: 35 },
+    { fileName: 'timeBarRace',    index: 0 },
+    { fileName: 'timeBarRace',    index: 1 },
     { fileName: 'entityDoorExit', index: 7 },
-    { fileName: 'menu', index: 22 },
+    { fileName: 'menu',           index: 22 },
   ],
   'Bottom Text': [
     { fileName: 'menu', index: 24 },
@@ -251,10 +246,10 @@ export const menus: {
     { fileName: 'menu', index: 38 },
   ],
   'Pause Menu': [
-    { fileName: 'menu', index: 18 },
-    { fileName: 'menu', index: 19 },
-    { fileName: 'menu', index: 20 },
-    { fileName: 'menu', index: 21 },
+    { fileName: 'menu',       index: 18 },
+    { fileName: 'menu',       index: 19 },
+    { fileName: 'menu',       index: 20 },
+    { fileName: 'menu',       index: 21 },
     { fileName: 'background', index: 1 }, // or just a note? no, Locked would be good
   ],
   'Shift Menus': [
@@ -282,7 +277,7 @@ export const menus: {
     { fileName: 'entityEyeBat', index: 1 },
     { fileName: 'editor',       index: 4 },
     { fileName: 'editor',       index: 6 },
-    { fileName: 'background',   index: 2, description: 'Actual background color. Unlock at your own peril.' },
+    { fileName: 'background',   index: 2, description: 'The object selector background is derived from the palette´s background color. Maybe don´t change it here.' },
   ],
   'Editor Lower Text': [
     { fileName: 'menu', index: 5 },
@@ -301,6 +296,49 @@ export const menus: {
   'Help': [
     { fileName: 'menu', index: 40 },
     { fileName: 'menu', index: 41 },
+  ],
+
+  // Unknown
+  'Unknown (Background)': [
+    { fileName: 'background', index: 3 },
+    { fileName: 'background', index: 4 },
+  ],
+  'Unknown (Editor)': [
+    { fileName: 'editor', index: 1 },
+    { fileName: 'editor', index: 9 },
+  ],
+  'Unknown (Headbands)': [
+    { fileName: 'headbands', index: 1 },
+    { fileName: 'headbands', index: 3 },
+    { fileName: 'headbands', index: 5 },
+    { fileName: 'headbands', index: 7 },
+    { fileName: 'headbands', index: 8 },
+    { fileName: 'headbands', index: 9 },
+    { fileName: 'headbands', index: 10 },
+    { fileName: 'headbands', index: 11 },
+    { fileName: 'headbands', index: 12 },
+    { fileName: 'headbands', index: 13 },
+    { fileName: 'headbands', index: 14 },
+    { fileName: 'headbands', index: 15 },
+    { fileName: 'headbands', index: 16 },
+  ],
+  'Unknown (Menu)': [
+    { fileName: 'menu', index: 6 },
+    { fileName: 'menu', index: 11 },
+    { fileName: 'menu', index: 36 },
+    { fileName: 'menu', index: 39 },
+  ],
+  'Unknown (Timebar)': [
+    { fileName: 'timeBar', index: 3 },
+    { fileName: 'timeBar', index: 5 },
+    { fileName: 'timeBar', index: 7 },
+  ],
+  'Unknown (Trap Door)': [
+    { fileName: 'entityDoorTrap', index: 2 },
+    { fileName: 'entityDoorTrap', index: 3 },
+  ],
+  'Unknown (Evil Ninja)': [
+    { fileName: 'entityEvilNinja', index: 1 },
   ]
 }
 

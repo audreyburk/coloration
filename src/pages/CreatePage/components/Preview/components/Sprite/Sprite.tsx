@@ -46,7 +46,7 @@ export default function Sprite(props: Props) {
   const offsetX = (44 - width) / 2
   const offsetY = (44 - height) / 2
 
-  return <div className={styles.container} style={style}>
+  return <div className={cn} style={style}>
     {
       layers.map(([ sprite, color, index ]) => {
         const hex = colors[color][index]

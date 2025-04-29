@@ -44,11 +44,39 @@ export default function LeaderboardEpisodesGridPreview({
     '--leaderboard-tab-background':           colors.menu[25],
     '--leaderboard-tab-background-selected':  colors.menu[26],
     '--leaderboard-tab-text':                 colors.menu[27],
+    '--ready-one':                            colors.timeBarRace[1],
+    '--ready-one-ready':                      colors.headbands[0],
+    '--ready-two':                            colors.timeBarRace[2],
+    '--ready-three':                          colors.timeBarRace[3],
+    '--ready-four':                           colors.timeBarRace[4],
+    '--not-ready':                            colors.timeBarRace[0],
   }
 
-  return <PreviewLink className={styles.leaderboard} style={cssVars as React.CSSProperties} menu='Menu Background'>
+  return <PreviewLink className={styles.episodesPreview} style={cssVars as React.CSSProperties} menu='Menu Background'>
+    <PreviewLink className={styles.readiness} menu='Ready Players'>
+      <div className={styles.readyPlayer}>
+        <div>Player 1</div>
+        <div className={styles.readyPlayerOne}>Ready</div>
+      </div>
+      <div className={styles.readyPlayer}>
+        <div>Player 2</div>
+        <div>Ready</div>
+      </div>
+      <div className={styles.readyPlayer}>
+        <div>Player 3</div>
+        <div>Ready</div>
+      </div>
+      <div className={styles.readyPlayer}>
+        <div>Player 4</div>
+        <div>Ready</div>
+      </div>
+      <div className={styles.readyPlayer}>
+        <div>Player 5</div>
+        <div className={styles.readyPlayerPress}>Press</div>
+      </div>
+    </PreviewLink>
     <div className={styles.grid}>
-      <PreviewLink className={styles.gridTabs} menu='Main Tabs'>
+      <PreviewLink className={styles.gridTabs} menu='Tabs'>
         <Tab text='Intro' />
         <Tab text='N++' className={styles.gridTabSelected} />
         <Tab text='Legacy' />

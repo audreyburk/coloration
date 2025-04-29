@@ -1,318 +1,336 @@
-import { Field } from '../createPageTypes'
-
-// having the sprites in fileData is REALLY DUMB
-// there is not a color-to-sprite relationship, not like this
-// we just need a sprites list that points to fileData/colors
-// yeah, when we want to draw something, fileData should not be involved.
-
-export const objects: { [index: string]: Field[] } = {
+export const objects: { [index: string]: string[] } = {
   background: [
-    { text: 'Tiles' },
-    { text: 'Tile outline. Underline in pause menu.' },
-    { text: 'Background', sprite: 'outlineTester.png', outline: true },
-    { text: '?' },
-    { text: '?' },
-    { text: 'Entity outline' }
+    'Tiles',
+    '<objects> Tile outline.\n' +
+      '<ingame> Underline in pause menu.',
+    'Background',
+    '?',
+    '?',
+    'Entity outline',
   ],
 
   editor: [
-    { text: 'Regular grid lines', sprite: 'editor0.png' },
-    { text: '?' },
-    { text: 'Fine grid lines', sprite: 'editor2.png' },
-    { text: 'Rectangular tile selection and crosshair' },
-    { text: 'Direction arrows for entity movement' },
-    { text: 'Door-switch connections', sprite: 'editor5.png' },
-    { text: 'Circular entity selection' },
-    { text: 'Cut mode outline' },
-    { text: 'Selected tile' },
-    { text: '?' }
+    'Regular grid lines',
+    '?',
+    'Fine grid lines',
+    'Rectangular tile selection and crosshair',
+    'Direction arrows for entity movement',
+    'Door-switch connections',
+    'Circular entity selection',
+    'Cut mode outline',
+    'Selected tile',
+    '?',
   ],
 
   explosions: [
-    { text: 'Fine particles. Also: Rocket flare. (LINK ME?)' },
-    { text: 'Light dust.' },
-    { text: 'Heavy dust.' },
-    { text: 'Blood.' }
+    'Fine particles.\n' +
+      'Rocket flare.',
+    'Thin dust.',
+    'Fat dust.',
+    'Blood.',
   ],
 
   fxDroneZap: [
-    { text: 'Zap effect, ray 1' },
-    { text: 'Zap effect, ray 2' }
+    'Zap effect, ray 1',
+    'Zap effect, ray 2',
   ],
 
   fxFloorguardZap: [
-    { text: 'Zap effect, ray 1' },
-    { text: 'Zap effect, ray 2' }
+    'Zap effect, ray 1',
+    'Zap effect, ray 2',
   ],
 
   fxNinja: [
-    { text: 'Jumping dust (usually higher-contrast)' },
-    { text: 'Falling dust (usually lower-contrast)' }
+    'Jumping dust (usually higher-contrast)',
+    'Falling dust (usually lower-contrast)',
   ],
 
   headbands: [
-    { text: 'Headband, standard. \'Ready\' for player 1 in race mode (unless headband/ninja selection is shifted).' },
-    { text: '?' },
-    { text: 'Headband, x type' },
-    { text: '?' },
-    { text: 'Headband, y type' },
-    { text: '?' },
-    { text: 'Headband, z type' },
-    { text: '?' },
-    { text: '?' },
-    { text: '?' },
-    { text: '?' },
-    { text: '?' },
-    { text: '?' },
-    { text: '?' },
-    { text: '?' },
-    { text: '?' },
-    { text: '?' }
+    '<objects> Headband, standard.\n' +
+      '<episodes> Episode Grid: "Ready" for Player 1 (unless headband/ninja selection is shifted).',
+    '?',
+    'Headband, X type',
+    '?',
+    'Headband, Y type',
+    '?',
+    'Headband, Z type',
+    '?',
+    '?',
+    '?',
+    '?',
+    '?',
+    '?',
+    '?',
+    '?',
+    '?',
+    '?',
   ],
 
   menu: [
-    { text: 'General UI background. Empty space when game doesn´t fit screen resolution.' },
-    { text: 'Leaderboard: Background. Editor: Side panel background (darkened later).' },
-    { text: 'Leaderboard: Other player´s scores, your rank (see 14, 17). Also, race options text. Editor side panel: Unselected text.' },
-    { text: '\'Color / Music\' and \'Social\' menu panels background.' },
-    { text: 'Main menu: Text, unselected (see 11). Help: Directional arrows. Also, uncompleted challenges (both requirements text and brackets) while playing the level (see 11, also see timeBarRace 1 and 2).' },
-    { text: 'Uncompleted episode background (see 8). Profile: Uncompleted episode. Editor: Level name when not being played.' },
-    { text: '?' },
-    { text: 'Completed episode background (see 6). Profile: Completed episode.' },
-    { text: 'Episode tabs background, unselected (see 13). + userlevel' },
-    { text: 'Episode box outline (see 33).' },
-    { text: 'Main menu: Text, selected (see 5). Logo color. Cursor color. Also, completed challenges (brackets) when playing the level (see 5, also see timeBarRace 1 and 2).' },
-    { text: '?' },
-    { text: 'Episode tabs background, selected (see 9).+ userlevel' },
-    { text: 'Leaderboards: Other player´s names, your score (see 3, 17). Profile: Header text in side panel (see 15, 16).' },
-    { text: 'Profile: Numbers and some text (see 14, 16). Options: Unselected text, scrollbar triangles, upper dividing line. Credits: Regular text. Story: Upper dividing line.' },
-    { text: 'Profile: Remaining text and percentages (see 14, 15). Story: Text. Options: Selected text, little bar in scrollbar. Credits: Header text.' },
-    { text: 'Leaderboards: Other player´s ranks, your name (see 3, 14). Also, messages that appear in the leaderboard (\'Server error\', \'Player 2 needed for score submission\', race options header, etc). Profile: Death count bars. Editor: Header text in side panel, messages when publishing, naming, etc. (not sure the editor stuff is true. maybe just the side panels)' },
-    { text: '\'Color / Music\' and \'Social\' menus header text (see 30). The other text is the same, but more transparent.' },
-    { text: 'Pause menu and editor panels unselected text (see 20).' },
-    { text: 'Pause menu and editor panels selected text (see 19).' },
-    { text: 'Pause menu and editor panels background.' },
-    { text: 'Pause menu and editor panels outline.' },
-    { text: 'Outline for selected episode / level / panel. Separator between level name and info. Level loading spiral. Scroll bar and its triangle in level view and in the editor level list. Also \'Server error\' when loading userlevels.' },
-    { text: 'Uncompleted episode text (see 31).' },
-    { text: 'Bottom info text (key controls, \'paint tiles\' in editor, etc.).' },
-    { text: 'Leaderboard tabs background, unselected (see 27).' },
-    { text: 'Leaderboard tabs background, selected (see 26).' },
-    { text: 'Leaderboard tabs text.' },
-    { text: 'Level name when playing.' },
-    { text: '\'Color / Music\' selected option; \'Social\' menu option names (see 18).' },
-    { text: 'Completed episode text (see 24).' },
-    { text: 'Tabs text (episodes and userlevels), unselected (see 34).' },
-    { text: 'Leaderboard entry selection box (see 10).' },
-    { text: 'Tabs text (episodes and userlevels), selected (see 32). Sub-tab text, selected (e.g. \'By Date\' in the userlevels) (see 38).' },
-    { text: 'Soundtrack name.' },
-    { text: 'Level information text (level name, author, success rate...). Also, upper big header text in every submenu. Game messages: \'Press X to start replay\', \'Success!\', \'Oops!\', \'Press X to continue\', \'Press X to try again\', \'submitting...\', etc.' },
-    { text: '?' },
-    { text: 'Sub-tab text, unselected (e.g. \'By Date\' in the userlevels) (see 34).' },
-    { text: 'Text after level / episode completion (\'Your Global Rank\', level times, etc.).' },
-    { text: '?' },
-    { text: 'Help menu header text.' },
-    { text: 'Help menu text.' }
+    'General UI background. Empty space when game doesn´t fit screen resolution.',
+    'Leaderboard background.\n' +
+      '(np) Editor: Side panel background (darkened later).',
+    'Leaderboard: Other player´s scores, your rank (see 14, 17).\n' +
+      '(np) Race options text.\n' +
+      '(np) Editor side panel: Unselected text.',
+    'Panel background.',
+    '<menus> Main menu: Text, unselected.\n' +
+      '<ingame> Uncompleted challenges (requirements and brackets) while playing.\n' +
+      '(np) Help: Directional arrows.\n',
+    '<episodes> Uncompleted episode background.\n' +
+      '<editor> Editor: Level name when not being played.\n' +
+      '(np) Profile: Uncompleted episode.',
+    '?',
+    'Completed episode background (see 6).\n' +
+      '(np) Profile: Completed episode.',
+    'Tabs background, unselected (Episode Grid and Level List)',
+    'Episode box outline (see 33).',
+    '<menus> Main menu: Text, selected.\n' +
+      '<ingame> Completed challenges (brackets) when playing the level.\n' +
+      '(np) Logo color. Cursor color.',
+    '?',
+    'Tabs background, selected (Episode Grid and Level List)',
+    'Leaderboards: Other player´s names, your score.\n' +
+      '(np) Profile: Header text in Badges/Killcount panel.',
+    'Profile: Numbers and some text.\n' +
+      '(np) Options: Unselected text, scrollbar triangles, upper dividing line.\n' +
+      '(np) Credits: Regular text.\n' +
+      '(np) Story: Upper dividing line.',
+    'Profile: Remaining text and percentages.\n' +
+      '(np) Story: Text.\n' +
+      '(np) Options: Selected text, little bar in scrollbar.\n' +
+      '(np) Credits: Header text.',
+    'Leaderboards: Other player´s ranks, your name, and messages ("Server error", race options header, etc).\n' +
+      '(np) Profile: Death count bars.\n' +
+      '(np) Editor: Header text in side panel, messages when publishing, naming, etc. (not sure this is true; might just be the side panels)',
+    'Header text and main text. Non-selected Colour menus are the same but slightly transparent (np).',
+    'Pause menu and editor panels unselected text.',
+    'Pause menu and editor panels selected text.',
+    'Pause menu and editor panels background.',
+    'Pause menu and editor panels outline.',
+    '<episodes> Episode Grid: Selected episode cursor. Selected panel (np).\n' +
+      '<levels> Level List: Selected level cursor. Level name underline. Scrollbar.\n' +
+      '(np) Browse loading spiral and "Server error".\n' +
+      '(np) Editor level list scrollbar.',
+    'Uncompleted episode text.',
+    'Bottom info text:\n' +
+      '<levels> hotkeys in menus \n' +
+      '<editor> edit mode & active entity in editor',
+    'Leaderboard tabs background, unselected.',
+    'Leaderboard tabs background, selected.',
+    'Leaderboard tabs text.',
+    'Level name when playing.',
+    'Social commands. Color/Music selected option (np).',
+    'Completed episode text.',
+    'Tabs text, unselected (Episode Grid and Level List)',
+    'Leaderboard entry selection box.',
+    'Tabs text, selected (Episode Grid and Level List)',
+    'Soundtrack name.',
+    '<levels> Level information text (level name, author, etc.).\n' +
+      '<levels> Big header text in every submenu.\n' +
+      '<ingame> Game messages: "Press X to start replay", "Success!", "Oops!", "Press X to continue", etc.',
+    '?',
+    'Subtab text, unselected.',
+    'Text after level/episode completion ("Your Global Rank", level times, etc.).',
+    '?',
+    'Help menu header text.',
+    'Help menu text.',
   ],
 
   timeBar: [
-    { text: 'Time remaining.' },
-    { text: 'Hardcore time gained.' },
-    { text: 'Empty timebar.' },
-    { text: '?' },
-    { text: 'Numbers.' },
-    { text: '?' },
-    { text: 'Little triangle that separates both sections of the time bar. (tell audrey to add this)' },
-    { text: '?' }
+    'Time remaining.',
+    'Hardcore time gained.',
+    'Empty timebar.',
+    '?',
+    'Numbers.',
+    '?',
+    'Little triangle that separates both sections of the time bar. (tell audrey to add this)',
+    '?',
   ],
 
   timeBarRace: [
-    { text: 'Text \'Player 2/3/4 press X\' in the menu. Uncompleted challenges (both requirements text and brackets) in level view (see menu 5 and 11).' },
-    { text: 'Text \'Player 1\' in the menu (the \'ready\' is controlled by #3 in headbands.tga). Completed challenges (brackets) in level view (see menu 5 and 11).' },
-    { text: 'Text \'Player 2 ready\' in the menu.' },
-    { text: 'Text \'Player 3 ready\' in the menu.' },
-    { text: 'Text \'Player 4 ready\' in the menu.' },
-    { text: 'Player 1 timebar outline.' },
-    { text: 'Player 1 timebar background.' },
-    { text: 'Player 1 timebar numbers.' },
-    { text: 'Player 2 timebar outline.' },
-    { text: 'Player 2 timebar background.' },
-    { text: 'Player 2 timebar numbers.' },
-    { text: 'Player 3 timebar outline.' },
-    { text: 'Player 3 timebar background.' },
-    { text: 'Player 3 timebar numbers.' },
-    { text: 'Player 4 timebar outline.' },
-    { text: 'Player 4 timebar background.' },
-    { text: 'Player 4 timebar numbers.' }
+    '<episodes> Episode Grid: "Player 5 press U".\n' +
+      '<levels> Level List: Uncompleted challenges.',
+    '<episodes> Text Episode Grid: "Player 1".\n' +
+      '<levels> Level List: Completed challenges (brackets).',
+    'Text "Player 2 Ready".',
+    'Text "Player 3 Ready".',
+    'Text "Player 4 Ready".',
+    'Player 1 timebar.',
+    'Player 1 timebar bonus time.',
+    'Player 1 timebar numbers.',
+    'Player 2 timebar.',
+    'Player 2 timebar bonus time.',
+    'Player 2 timebar numbers.',
+    'Player 3 timebar.',
+    'Player 3 timebar bonus time.',
+    'Player 3 timebar numbers.',
+    'Player 4 timebar.',
+    'Player 4 timebar bonus time.',
+    'Player 4 timebar numbers.',
   ],
 
   ninja: [
-    { text: 'Ninja 1. Also, replay inputs.', sprite: 'ninja0.png', outline: true },
-    { text: 'Ninja 2.', sprite: 'ninja1.png', outline: true },
-    { text: 'Ninja 3.', sprite: 'ninja2.png', outline: true },
-    { text: 'Ninja 4.', sprite: 'ninja3.png', outline: true }
+    'Ninja. Also, replay inputs.',
+    'Ninja, A type.',
+    'Ninja, B type.',
+    'Ninja, C type.',
   ],
 
   entityMine: [
-    { text: 'Mine exterior.', sprite: 'entityMine0.png', outline: true },
-    { text: 'Mine interior.', sprite: 'entityMine1.png' },
-    { text: 'Toggle mine.', sprite: 'entityMine2.png', outline: true },
-    { text: 'Toggle mine (toggling).', sprite: 'entityMine3.png', outline: true }
+    'Mine exterior.',
+    'Mine interior.',
+    'Toggle mine.',
+    'Toggle mine (toggling).',
   ],
 
   entityGold: [
-    { text: 'Gold interior.', sprite: 'entityGold0.png' },
-    { text: 'Gold exterior. Golden blood color.', sprite: 'entityGold1.png', outline: true },
-    { text: 'Gold shine.', sprite: 'entityGold2.png' }
+    'Gold interior.',
+    'Gold exterior. Golden blood color.',
+    'Gold shine.',
   ],
 
   entityDoorExit: [
-    { text: 'Exit panels.', sprite: 'entityDoorExit0.png' },
-    { text: 'Exit border.', sprite: 'entityDoorExit1.png', outline: true },
-    { text: 'Opened exit, upper.', sprite: 'entityDoorExit2.png' },
-    { text: 'Opened exit, lower.', sprite: 'entityDoorExit3.png' },
-    { text: 'Opened exit, upper, after challenge.', sprite: 'entityDoorExit4.png' },
-    { text: 'Opened exit, lower, after challenge.', sprite: 'entityDoorExit5.png' },
-    { text: '[!?] text in episode view.', sprite: 'entityDoorExit6.png' },
-    { text: '[!?] text in level view.', sprite: 'entityDoorExit7.png' }
+    'Exit panels.',
+    'Exit border.',
+    'Opened exit, upper.',
+    'Opened exit, lower.',
+    'Opened exit, upper, after challenge.',
+    'Opened exit, lower, after challenge.',
+    '[!?] challenge indicators.',
+    '[!?] challenge indicators and ++s.',
   ],
 
   entityDoorExitSwitch: [
-    { text: 'Exit switch border.', sprite: 'entityDoorExitSwitch0.png', outline: true },
-    { text: 'Exit switch border (collected).', sprite: 'entityDoorExitSwitch1.png', outline: true },
-    { text: 'Exit switch center (collected and not).', sprite: 'entityDoorExitSwitch2.png' },
-    { text: 'Exit switch background.', sprite: 'entityDoorExitSwitch3.png' },
-    { text: 'Exit switch background (collected).', sprite: 'entityDoorExitSwitch4.png' }
+    'Exit switch border.',
+    'Exit switch border (collected).',
+    'Exit switch center (collected and not).',
+    'Exit switch background.',
+    'Exit switch background (collected).',
   ],
 
   entityDoorRegular: [
-    { text: 'Regular door.', sprite: '05-0.png' }
+    'Normal door.',
   ],
 
   entityDoorLocked: [
-    { text: 'Locked door bar.', sprite: '06-0.png' },
-    { text: 'Locked door center.', sprite: '06-1.png' },
-    { text: 'Switch button.', sprite: '07-0.png' },
-    { text: 'Switch button (collected).', sprite: '07-0b.png' },
-    { text: 'Switch border.', sprite: '07-1.png' },
-    { text: 'Switch border (collected).', sprite: '07-1b.png' },
-    { text: 'Switch background (collected).', sprite: '07-4b.png' },
-    { text: 'Switch background.', sprite: '07-4.png' }
+    'Locked door bar.',
+    'Locked door center.',
+    'Switch button.',
+    'Switch button (collected).',
+    'Switch border.',
+    'Switch border (collected).',
+    'Switch background (collected).',
+    'Switch background.',
   ],
 
   entityDoorTrap: [
-    { text: 'Trap door bar.', sprite: '08-1.png' },
-    { text: 'Trap door bulges.', sprite: '08-2.png' },
-    { text: '?' },
-    { text: '?' },
-    { text: 'Untoggled switch border.', sprite: '09-2.png' },
-    { text: 'Toggled switch border.', sprite: '09-2b.png' },
-    { text: 'Untoggled switch background.', sprite: '09-4.png' },
-    { text: 'Toggled switch background.', sprite: '09-4b.png' }
+    'Trap door bar.',
+    'Trap door bulges.',
+    '?',
+    '?',
+    'Switch border.',
+    'Switch border (collected).',
+    'Switch background.',
+    'Switch background (collected).',
   ],
 
   entityLaunchPad: [
-    { text: 'Launchpad long pad.', sprite: '0A-0.png' },
-    { text: 'Launchpad short pad.', sprite: '0A-1.png' }
+    'Launchpad long pad.',
+    'Launchpad short pad.',
   ],
 
   entityOneWayPlatform: [
-    { text: 'Oneway platform long platform.', sprite: '0B-0.png' },
-    { text: 'Oneway platform short platform.', sprite: '0B-1.png' }
+    'Oneway long platform.',
+    'Oneway short platform.',
   ],
 
   entityDroneChaingun: [
-    { text: 'Chaingun drone background.', sprite: '0C-0.png' },
-    { text: 'Chaingun drone border, chaingun bullets.', sprite: '0C-1.png' }
+    'Chaingun drone background.',
+    'Chaingun drone border, chaingun bullets.',
   ],
 
   entityDroneLaser: [
-    { text: 'Laser drone interior while firing. Also, laser 1.' },
-    { text: 'Laser drone laser 2.' },
-    { text: 'Laser drone border.', sprite: '0D-2.png' },
-    { text: 'Laser drone aiming line.' }
+    'Laser drone interior while firing. Also, laser 1.',
+    'Laser drone laser 2.',
+    'Laser drone border.',
+    'Laser drone aiming line.',
   ],
 
   entityDroneZap: [
-    { text: 'Zap drone and minidrone background.', sprite: '0E-0.png' },
-    { text: 'Zap drone and minidrone border.', sprite: '0E-1.png' }
+    'Zap drone and minidrone background.',
+    'Zap drone and minidrone border.',
   ],
 
   entityDroneChaser: [
-    { text: 'Chaser drone background.', sprite: '0F-0.png' },
-    { text: 'Chaser drone border.', sprite: '0F-1.png' }
+    'Chase drone background.',
+    'Chase drone border.',
   ],
 
   entityFloorGuard: [
-    { text: 'Floorguard main color.', sprite: '10-0.png' },
-    { text: 'Floorguard eye.', sprite: '10-1.png' }
+    'Floorguard body.',
+    'Floorguard eye.',
   ],
 
   entityBounceBlock: [
-    { text: 'Bounceblock interior.', sprite: '11-0.png' },
-    { text: 'Bounceblock border.', sprite: '11-1.png' }
+    'Bounceblock interior.',
+    'Bounceblock border.',
   ],
 
   entityRocket: [
-    { text: 'Rocket turret center.', sprite: '12-0.png' },
-    { text: 'Rocket turret border.', sprite: '12-1.png' },
-    { text: 'Rocket color.' },
-    { text: 'Rocket fumes.' }
+    'Rocket turret center.',
+    'Rocket turret border.',
+    'Rocket color.',
+    'Rocket fumes.',
   ],
 
   entityTurret: [
-    { text: 'Turret center dot.', sprite: '13-0.png' },
-    { text: 'Turret exterior.', sprite: '13-1.png' },
-    { text: 'Crosshairs.' },
-    { text: 'Bullet.' },
-    { text: 'Squiggly lines.' }
+    'Turret center dot.',
+    'Turret exterior.',
+    'Crosshairs.',
+    'Bullet.',
+    'Squiggly lines.',
   ],
 
   entityThwomp: [
-    { text: 'Thwump border.', sprite: 'entityThwomp0.png' },
-    { text: 'Thwump interior.', sprite: 'entityThwomp1.png' },
-    { text: 'Thwump ray.', sprite: 'entityThwomp2.png' }
+    'Thwump border.',
+    'Thwump interior.',
+    'Thwump ray.',
   ],
 
   entityEvilNinja: [
-    { text: 'Evil ninja spawn.', sprite: 'entityEvilNinja0.png' },
-    { text: 'Evil ninja.' }
+    'Evil ninja spawner.',
+    '?',
   ],
 
   entityDualLaser: [
-    { text: 'Laser turrets turret.', sprite: 'entityDualLaser0.png' },
-    { text: 'Laser turrets laser.', sprite: 'entityDualLaser1.png' }
+    'Laser turret turret.',
+    'Laser turret laser.',
   ],
 
   entityBoostPad: [
-    { text: 'Boost pad (inactive).', sprite: '18-0.png' },
-    { text: 'Boost pad (active).', sprite: '18-0b.png' }
+    'Boost pad.',
+    'Boost pad (whooshing).',
   ],
 
   entityBat: [
-    { text: 'Deathball inner dot. Part of deathball´s zap.', sprite: '19-0.png' },
-    { text: 'Deathball middle circle. Part of deathball´s zap.', sprite: '19-1.png' },
-    { text: 'Deathball outer circle.', sprite: '19-2.png' }
+    'Deathball inner dot. Part of deathball´s zap.',
+    'Deathball middle circle. Part of deathball´s zap.',
+    'Deathball outer circle.',
   ],
 
   entityEyeBat: [
-    { text: 'Mini background. Editor: QWEASD letters.', sprite: '1A-1.png' },
-    { text: 'Mini eye (gets merged with the background). Editor: Entity menu hotkeys.', sprite: '1A-0.png' }
+    '<objects> Mini body.\n' +
+      '<editor> Editor: QWEASD letters.',
+    '<objects> Mini eye (must be lighter than body).\n' +
+      '<editor> Editor: Entity menu hotkeys.',
   ],
 
   entityShoveThwomp: [
-    { text: 'Shove thwump center.', sprite: '1C-0.png' },
-    { text: 'Shove thwump ray.', sprite: '1C-1.png' },
-    { text: 'Shove thwump armor.', sprite: '1C-2.png' }
+    'Shove thwump center.',
+    'Shove thwump ray.',
+    'Shove thwump armor.',
   ]
 }
-
-// export function cget(filename, indices) {
-//   const file = objects[filename]
-//   if (!indices) {
-//     return file
-//   }
-//   return indices.map(i => file[i])
-// }
 
 export default objects
