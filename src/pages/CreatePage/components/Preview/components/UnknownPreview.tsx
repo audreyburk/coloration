@@ -40,6 +40,7 @@ export default function LevelsPreview({ colors }: Props) {
     <PreviewLink className={styles.unknown} menu='Unknown (Timebar)'>
       <div className={styles.idk} style={{ backgroundColor: colors.timeBar[3] }} />
       <div className={styles.idk} style={{ backgroundColor: colors.timeBar[5] }} />
+      <div className={styles.idk} style={{ backgroundColor: colors.timeBar[6] }} />
       <div className={styles.idk} style={{ backgroundColor: colors.timeBar[7] }} />
     </PreviewLink>
     <PreviewLink className={styles.unknown} menu='Unknown (Trap Door)'>

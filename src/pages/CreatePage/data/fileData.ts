@@ -144,7 +144,7 @@ export const objects: { [index: string]: string[] } = {
     '?',
     'Numbers.',
     '?',
-    'Little triangle that separates both sections of the time bar. (tell audrey to add this)',
+    '?',
     '?',
   ],
 

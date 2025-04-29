@@ -153,7 +153,6 @@ export const menus: {
     { fileName: 'timeBar', index: 1 },
     { fileName: 'timeBar', index: 2 },
     { fileName: 'timeBar', index: 4 },
-    { fileName: 'timeBar', index: 6 },
   ],
 
   // Leaderboard + Episodes
@@ -331,6 +330,7 @@ export const menus: {
   'Unknown (Timebar)': [
     { fileName: 'timeBar', index: 3 },
     { fileName: 'timeBar', index: 5 },
+    { fileName: 'timeBar', index: 6 },
     { fileName: 'timeBar', index: 7 },
   ],
   'Unknown (Trap Door)': [

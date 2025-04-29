@@ -3,13 +3,13 @@ export const defaultColors: { [index: string]: string[] } = {
     '#4F564D',
     '#4F564D',
     '#8C9487',
-    '#8C9487',
-    '#8C9487',
+    '#FF00FF',
+    '#FF00FF',
     '#8C9487'
   ],
   editor: [
     '#A6AAA3',
-    '#FFFFFF',
+    '#FF00FF',
     '#949B8F',
     '#FFFFFF',
     '#FBC902',
@@ -17,7 +17,7 @@ export const defaultColors: { [index: string]: string[] } = {
     '#000000',
     '#FFFFFF',
     '#C2CEB1',
-    '#323323'
+    '#FF00FF'
   ],
   entityBat: [
     '#3F1CB2',
@@ -65,8 +65,8 @@ export const defaultColors: { [index: string]: string[] } = {
   entityDoorTrap: [
     '#323323',
     '#C2CEB1',
-    '#323323',
-    '#323323',
+    '#FF00FF',
+    '#FF00FF',
     '#323323',
     '#798076',
     '#8C9487',
@@ -96,7 +96,7 @@ export const defaultColors: { [index: string]: string[] } = {
   ],
   entityEvilNinja: [
     '#000000',
-    '#000000'
+    '#FF00FF'
   ],
   entityEyeBat: [
     '#FFFFFF',
@@ -168,22 +168,22 @@ export const defaultColors: { [index: string]: string[] } = {
   ],
   headbands: [
     '#9A3763',
-    '#FFFFFF',
+    '#FF00FF',
     '#9100A4',
-    '#8B9CF7',
+    '#FF00FF',
     '#B9C3B2',
-    '#000000',
+    '#FF00FF',
     '#6B7367',
-    '#FFFFFF',
-    '#EDDC54',
-    '#FDF4B7',
-    '#000000',
-    '#5068E4',
-    '#8B9CF7',
-    '#FFFFFF',
-    '#D0306C',
-    '#EA6899',
-    '#FFFFFF'
+    '#FF00FF',
+    '#FF00FF',
+    '#FF00FF',
+    '#FF00FF',
+    '#FF00FF',
+    '#FF00FF',
+    '#FF00FF',
+    '#FF00FF',
+    '#FF00FF',
+    '#FF00FF'
   ],
   menu: [
     '#323323',
@@ -192,12 +192,12 @@ export const defaultColors: { [index: string]: string[] } = {
     '#666E62',
     '#ECFFDF',
     '#CBDCC1',
-    '#323323',
+    '#FF00FF',
     '#666E62',
     '#889382',
     '#737C6E',
     '#FECC04',
-    '#FECC04',
+    '#FF00FF',
     '#FECC04',
     '#000000',
     '#666E62',
@@ -222,7 +222,7 @@ export const defaultColors: { [index: string]: string[] } = {
     '#323323',
     '#CBDCC1',
     '#ECFFDF',
-    '#C2CEB1',
+    '#FF00FF',
     '#FECC04',
     '#C2CEB1',
     '#FF00FF',
@@ -239,11 +239,11 @@ export const defaultColors: { [index: string]: string[] } = {
     '#FECC04',
     '#DF9B43',
     '#707A6B',
-    '#707A6B',
+    '#FF00FF',
     '#444B43',
-    '#444B43',
-    '#C2CEB1',
-    '#C2CEB1'
+    '#FF00FF',
+    '#FF00FF',
+    '#FF00FF'
   ],
   timeBarRace: [
     '#889382',
