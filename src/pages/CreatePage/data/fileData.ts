@@ -70,7 +70,7 @@ export const objects: { [index: string]: string[] } = {
     'General UI background. Empty space when game doesn´t fit screen resolution.',
     'Leaderboard background.\n' +
       '(np) Editor: Side panel background (darkened later).',
-    'Leaderboard: Other player´s scores, your rank (see 14, 17).\n' +
+    'Leaderboard: Other players´ scores, your rank.\n' +
       '(np) Race options text.\n' +
       '(np) Editor side panel: Unselected text.',
     'Panel background.',
@@ -81,16 +81,16 @@ export const objects: { [index: string]: string[] } = {
       '<editor> Editor: Level name when not being played.\n' +
       '(np) Profile: Uncompleted episode.',
     '?',
-    'Completed episode background (see 6).\n' +
+    'Completed episode background.\n' +
       '(np) Profile: Completed episode.',
     'Tabs background, unselected (Episode Grid and Level List)',
-    'Episode box outline (see 33).',
+    'Episode box outline.',
     '<menus> Main menu: Text, selected.\n' +
       '<ingame> Completed challenges (brackets) when playing the level.\n' +
       '(np) Logo color. Cursor color.',
     '?',
     'Tabs background, selected (Episode Grid and Level List)',
-    'Leaderboards: Other player´s names, your score.\n' +
+    'Other players´ names, your score.\n' +
       '(np) Profile: Header text in Badges/Killcount panel.',
     'Profile: Numbers and some text.\n' +
       '(np) Options: Unselected text, scrollbar triangles, upper dividing line.\n' +
@@ -100,7 +100,8 @@ export const objects: { [index: string]: string[] } = {
       '(np) Story: Text.\n' +
       '(np) Options: Selected text, little bar in scrollbar.\n' +
       '(np) Credits: Header text.',
-    'Leaderboards: Other player´s ranks, your name, and messages ("Server error", race options header, etc).\n' +
+    'Other players´ ranks, your name, and messages ("Server error", etc.).\n' +
+      '(np) Race Options header\n' +
       '(np) Profile: Death count bars.\n' +
       '(np) Editor: Header text in side panel, messages when publishing, naming, etc. (not sure this is true; might just be the side panels)',
     'Header text and main text. Non-selected Colour menus are the same but slightly transparent (np).',
@@ -151,11 +152,11 @@ export const objects: { [index: string]: string[] } = {
   timeBarRace: [
     '<episodes> Episode Grid: "Player 5 press U".\n' +
       '<levels> Level List: Uncompleted challenges.',
-    '<episodes> Text Episode Grid: "Player 1".\n' +
+    '<episodes> Episode Grid: "Player 1".\n' +
       '<levels> Level List: Completed challenges (brackets).',
-    'Text "Player 2 Ready".',
-    'Text "Player 3 Ready".',
-    'Text "Player 4 Ready".',
+    '"Player 2 Ready".',
+    '"Player 3 Ready".',
+    '"Player 4 Ready".',
     'Player 1 timebar.',
     'Player 1 timebar bonus time.',
     'Player 1 timebar numbers.',
@@ -195,8 +196,8 @@ export const objects: { [index: string]: string[] } = {
     'Exit border.',
     'Opened exit, upper.',
     'Opened exit, lower.',
-    'Opened exit, upper, after challenge.',
-    'Opened exit, lower, after challenge.',
+    'Opened exit, upper (after challenge).',
+    'Opened exit, lower (after challenge).',
     '[!?] challenge indicators.',
     '[!?] challenge indicators and ++s.',
   ],

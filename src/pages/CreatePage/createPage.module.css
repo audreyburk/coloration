@@ -1,15 +1,7 @@
-button {
-  padding: 5px 16px;
-  margin-right: 16px;
-  margin-bottom: 10px;
-  cursor: pointer;
-}
-
 .previews {
   position: relative;
   width: calc(100% + 72px);
   margin-left: -36px;
-  /* cursor: default; */
   user-select: none;
 
   font-family: Sys;
@@ -19,10 +11,32 @@ button {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.previewButtons {
+  margin-left: -36px;
+}
+
+.previewButton {
+  display: inline-block;
+  padding: 14px 16px 16px;
+  border: none;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1;
+  cursor: pointer;
+}
+.previewButton:hover {
+  background-color: #FFFFFF10;
+}
+
+.previewButtonActive,
+.previewButtonActive:hover {
+  background-color: #FFFFFF15;
+}
+
 .rowOne {
   display: flex;
   flex-wrap: wrap;
-  margin-top: 22px;
+  margin-top: 36px;
 }
 
 .picker {
@@ -95,10 +109,6 @@ button {
 .fieldsTitle {
   font-size: 24px;
   line-height: 1;
-}
-
-.fieldSpace {
-  margin-bottom: 20px;
 }
 
 .swatches {

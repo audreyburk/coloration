@@ -1,7 +1,7 @@
 // import { ColorResult } from 'react-color'
 import { useThrottledCallback } from 'use-debounce'
 import { useState } from 'react'
-import { HexColorPicker, HexColorInput } from 'react-colorful'
+import { HexColorPicker } from 'react-colorful'
 
 // data files, big consts
 import fileData from './data/fileData'
@@ -17,6 +17,17 @@ import Preview from './components/Preview'
 
 import styles from './createPage.module.css'
 
+const previewKeys = [
+  [ 'objects', 'Objects' ],
+  [ 'episodes', 'Episode Grid' ],
+  [ 'levels', 'Level List' ],
+  [ 'ingame', 'In Game' ],
+  [ 'editor', 'Editor' ],
+  [ 'menus', 'Menus' ],
+  [ 'unknown', 'Unknown' ],
+]
+
+let fieldToggle = true
 
 export default function CreatePage() {
   const [ colors, setColors ] = useState(defaultColors)
@@ -63,21 +74,23 @@ export default function CreatePage() {
   return (
     <main>
       <CurrentMenuContext value={setMenu}>
+        {/* TODO: get rid of this lol */}
         <div className={styles.previews} style={{ backgroundColor: colors.menu[0] }}>
-          <Preview
-            colors={colors}
-            currentPreview={currentPreview}
-          />
+          <Preview colors={colors} currentPreview={currentPreview} />
         </div>
       </CurrentMenuContext>
-      <div>
-        <button onClick={() => setCurrentPreview('objects')}>Objects</button>
-        <button onClick={() => setCurrentPreview('episodes')}>Episode Grid</button>
-        <button onClick={() => setCurrentPreview('levels')}>Level List</button>
-        <button onClick={() => setCurrentPreview('ingame')}>In Game</button>
-        <button onClick={() => setCurrentPreview('editor')}>Editor</button>
-        <button onClick={() => setCurrentPreview('menus')}>Menu</button>
-        <button onClick={() => setCurrentPreview('unknown')}>Unknown</button>
+      <div className={styles.previewButtons}>
+        {
+          previewKeys.map(([ key, title ]) => {
+            let cn = styles.previewButton
+            if (key == currentPreview) {
+              cn = cn + ' ' + styles.previewButtonActive
+            }
+            return <div key={key} className={cn} onClick={() => setCurrentPreview(key)}>
+              { title }
+            </div>
+          })
+        }
       </div>
       <div className={styles.rowOne}>
         <div>
@@ -101,14 +114,16 @@ export default function CreatePage() {
               menus[currentMenu].map((field, i) => {
                 const { fileName, index, description, space } = field
                 const text = description || fileData[fileName][index]
-                const className = space ? styles.fieldSpace : undefined
+                if (space) {
+                  fieldToggle = !fieldToggle
+                }
                 return <ColorField
                   key={"field_" + fileName + index}
                   hex={colors[fileName][index]}
                   text={text}
                   onChange={handleColorSelectThrottled}
                   onFocus={() => setCurrentIndex(i)}
-                  className={className}
+                  dark={space}
                   active={currentIndex == i}
                   setCurrentPreview={setCurrentPreview}
                 />

@@ -1,27 +1,36 @@
 .field {
   position: relative;
   display: flex;
-  align-items: flex-start;
-  margin-bottom: 7px;
+  align-items: center;
+  padding: 4px;
+  background-color: #00000030;
   list-style-type: none;
-  /* border-left: 10px solid transparent; */
 }
 
-.fieldActive {
+/* .fieldActive {
   background-color: #FFFFFF15;
-}
+} */
 
-/* .fieldActive:before {
+.fieldActive:before {
   content: "";
   position: absolute;
-  top: 0;
-  left: -22px;
-  width: 22px;
-  height: 44px;
-  background-color: white;
-  border-top-left-radius: 22px;
-  border-bottom-left-radius: 22px;
-} */
+  top: calc(50% - 16px);
+  left: -28px;
+  width: 0;
+  height: 0;
+  border-top: 16px solid transparent;
+  border-bottom: 16px solid transparent;
+  border-left: 22px solid currentColor;
+}
+
+.fieldSpacer {
+}
+
+.fieldDark {
+  /* background-color: #FFFFFF03;
+  background-color: transparent; */
+  margin-top: 8px;
+}
 
 .input {
   position: relative;
@@ -30,28 +39,13 @@
   padding: 11px 15px 10px;
   margin-right: 12px;
   border: none;
-  /* border-radius: 10px; */
   font-family: 'Courier New';
   font-size: 20px;
   letter-spacing: 1px;
-  /* border-left: 10px solid transparent; */
 }
 
 .input:focus {
   outline: none;
-}
-
-.picker {
-  position: absolute !important;
-  display: none !important;
-  width: 300px !important;
-  height: 230px !important;
-  top: calc(50% + 25px);
-  z-index: 1;
-}
-.field:focus-within .picker,
-.picker:hover {
-  display: flex !important;
 }
 
 .text {
@@ -67,6 +61,5 @@
 }
 
 .text span:hover {
-  /* text-decoration: underline; */
   color: orange;
 }

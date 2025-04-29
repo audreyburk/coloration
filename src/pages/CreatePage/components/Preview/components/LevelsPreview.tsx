@@ -53,7 +53,7 @@ export default function LevelsPreview({
     '--level-info':                     colors.menu[35],
   }
 
-  return <PreviewLink className={styles.levels} style={cssVars as React.CSSProperties} menu='Menu Background'>
+  return <PreviewLink className={styles.levels} style={cssVars as React.CSSProperties} menu='Levels Background'>
     <div className={styles.header}>
       N++{'>'}Solo{'>'}Levels
     </div>

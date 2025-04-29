@@ -8,6 +8,7 @@
   display: flex;
   height: 60px;
   margin-bottom: 10px;
+  margin-left: 10px;
 }
 
 .unknown:first-child {
@@ -17,4 +18,8 @@
 .idk {
   width: 60px;
   margin-left: 10px;
+}
+
+.idk:first-child {
+  margin-left: 0;
 }
