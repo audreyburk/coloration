@@ -7,9 +7,8 @@ import Tab          from './Tab'
 
 import styles from './leaderboardEpisodeGridPreview.module.css'
 
-// TODO: we still need to add the bottom text!!!!!
-// TODO: add the little brackets on the levels at the bottom
-// TODO: move the big header from Levels to here & add the Player 2 Ready stuff
+// TODO: Menu tabs and leaderboard tabs in same menu?
+
 
 interface Props {
   colors: { [index: string]: string[] };

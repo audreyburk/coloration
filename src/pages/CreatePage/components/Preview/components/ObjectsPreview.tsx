@@ -4,7 +4,7 @@ import Tab          from './Tab'
 
 import styles from './objectsPreview.module.css'
 
-// still need to account for timebar triangle!!!
+// TODO: group normal door with locked door (same menu, bigger hover)
 
 
 

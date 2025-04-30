@@ -138,12 +138,12 @@ export const spriteData: {
     width: 372,
     height: 346,
     layers: [
+      [ 'explosion-outline.png', 'background', 5 ],
       [ 'explosion-4.png', 'ninja', 0 ],
       [ 'explosion-0.png', 'explosions', 0 ],
       [ 'explosion-1.png', 'explosions', 1 ],
       [ 'explosion-2.png', 'explosions', 2 ],
       [ 'explosion-3.png', 'explosions', 3 ],
-      [ 'explosion-outline.png', 'background', 5 ],
     ]
   },
   explosionRocket: {

@@ -45,8 +45,8 @@ export const menus: {
     { fileName: 'entityDoorTrap', index: 0 },
     { fileName: 'entityDoorTrap', index: 1 },
     { fileName: 'entityDoorTrap', index: 4, space: true },
-    { fileName: 'entityDoorTrap', index: 5 },
-    { fileName: 'entityDoorTrap', index: 6, space: true },
+    { fileName: 'entityDoorTrap', index: 6 },
+    { fileName: 'entityDoorTrap', index: 5, space: true },
     { fileName: 'entityDoorTrap', index: 7 },
   ],
   'Gold': [
@@ -58,9 +58,9 @@ export const menus: {
     { fileName: 'entityThwomp', index: 0 },
     { fileName: 'entityThwomp', index: 1 },
     { fileName: 'entityThwomp', index: 2 },
-    { fileName: 'entityShoveThwomp', index: 0, space: true },
+    { fileName: 'entityShoveThwomp', index: 2, space: true },
     { fileName: 'entityShoveThwomp', index: 1 },
-    { fileName: 'entityShoveThwomp', index: 2 },
+    { fileName: 'entityShoveThwomp', index: 0 },
   ],
   'Kindly Objects': [
     { fileName: 'entityBounceBlock',    index: 0 },
@@ -90,9 +90,9 @@ export const menus: {
     { fileName: 'entityDroneChaingun', index: 1 },
   ],
   'Deadly Balls': [
-    { fileName: 'entityBat', index: 0 },
-    { fileName: 'entityBat', index: 1 },
     { fileName: 'entityBat', index: 2 },
+    { fileName: 'entityBat', index: 1 },
+    { fileName: 'entityBat', index: 0 },
     { fileName: 'entityEyeBat', index: 0, space: true },
     { fileName: 'entityEyeBat', index: 1 },
   ],
@@ -249,10 +249,10 @@ export const menus: {
     { fileName: 'menu', index: 38 },
   ],
   'Pause Menu': [
-    { fileName: 'menu',       index: 18 },
-    { fileName: 'menu',       index: 19 },
     { fileName: 'menu',       index: 20 },
     { fileName: 'menu',       index: 21 },
+    { fileName: 'menu',       index: 18 },
+    { fileName: 'menu',       index: 19 },
     { fileName: 'background', index: 1 }, // or just a note? no, Locked would be good
   ],
   'Shift Menus': [
@@ -266,6 +266,8 @@ export const menus: {
     { fileName: 'menu', index: 4 },
     { fileName: 'menu', index: 10 },
   ],
+
+  // Editor
   'Editor Grid': [
     { fileName: 'editor', index: 0 },
     { fileName: 'editor', index: 2 },

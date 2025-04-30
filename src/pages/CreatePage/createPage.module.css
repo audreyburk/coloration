@@ -44,6 +44,8 @@
 }
 
 .importExport {
+  display: flex;
+  flex-flow: column;
   margin-top: 60px;
 }
 
@@ -58,10 +60,15 @@
 }
 
 .upload::file-selector-button,
-.download {
+.download,
+.generate {
   font-size: 18px;
   padding: 16px 16px 14px;
   cursor: pointer;
+}
+
+.generate {
+  margin-bottom: 40px;;
 }
 
 .download{

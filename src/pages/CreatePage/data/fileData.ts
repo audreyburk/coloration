@@ -76,6 +76,7 @@ export const objects: { [index: string]: string[] } = {
     'Panel background.',
     '<menus> Main menu: Text, unselected.\n' +
       '<ingame> Uncompleted challenges (requirements and brackets) while playing.\n' +
+      '<episodes> Episode Grid: N++ deathless time\n' +
       '(np) Help: Directional arrows.\n',
     '<episodes> Uncompleted episode background.\n' +
       '<editor> Editor: Level name when not being played.\n' +
@@ -86,7 +87,8 @@ export const objects: { [index: string]: string[] } = {
     'Tabs background, unselected (Episode Grid and Level List)',
     'Episode box outline.',
     '<menus> Main menu: Text, selected.\n' +
-      '<ingame> Completed challenges (brackets) when playing the level.\n' +
+      '<ingame> In Game: Completed challenges (brackets).\n' +
+      '<episodes> Episode Grid: N++ deathless label\n' +
       '(np) Logo color. Cursor color.',
     '?',
     'Tabs background, selected (Episode Grid and Level List)',
@@ -105,10 +107,10 @@ export const objects: { [index: string]: string[] } = {
       '(np) Profile: Death count bars.\n' +
       '(np) Editor: Header text in side panel, messages when publishing, naming, etc. (not sure this is true; might just be the side panels)',
     'Header text and main text. Non-selected Colour menus are the same but slightly transparent (np).',
-    'Pause menu and editor panels unselected text.',
-    'Pause menu and editor panels selected text.',
-    'Pause menu and editor panels background.',
-    'Pause menu and editor panels outline.',
+    'Text.',
+    'Selected text.',
+    'Background.',
+    'Outline.',
     '<episodes> Episode Grid: Selected episode cursor. Selected panel (np).\n' +
       '<levels> Level List: Selected level cursor. Level name underline. Scrollbar.\n' +
       '(np) Browse loading spiral and "Server error".\n' +
@@ -233,7 +235,7 @@ export const objects: { [index: string]: string[] } = {
     'Switch border.',
     'Switch border (collected).',
     'Switch background.',
-    'Switch background (collected).',
+    'Switch background (collected) (usually background color).',
   ],
 
   entityLaunchPad: [
@@ -322,7 +324,7 @@ export const objects: { [index: string]: string[] } = {
 
   entityEyeBat: [
     '<objects> Mini body.\n' +
-      '<editor> Editor: QWEASD letters.',
+      '(np) Editor: QWEASD letters.',
     '<objects> Mini eye (must be lighter than body).\n' +
       '<editor> Editor: Entity menu hotkeys.',
   ],

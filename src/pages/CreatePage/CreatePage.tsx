@@ -11,6 +11,7 @@ import defaultColors from './data/defaultColors'
 import { CurrentMenuContext } from './CurrentMenuContext'
 
 import { loadPalette, createPalette } from './utils/script'
+import generateMenus from './utils/generateMenus'
 
 import ColorField from './components/ColorField'
 import Preview from './components/Preview'
@@ -39,6 +40,11 @@ export default function CreatePage() {
   function setMenu(menu: string) {
     setCurrentIndex(0)
     setCurrentMenu(menu)
+  }
+
+  function handleMenuGeneration() {
+    const newColors = generateMenus(colors)
+    setColors(newColors)
   }
 
   function handleUpload(e: any) {
@@ -98,6 +104,12 @@ export default function CreatePage() {
             onChange={handleColorSelectThrottled}
           />
           <div className={styles.importExport}>
+            <button
+              className={styles.generate}
+              onClick={handleMenuGeneration}
+            >
+              Generate Menus
+            </button>
             <span>Import palette (35 .tga files):</span>
             <input
               type="file"
