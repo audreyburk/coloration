@@ -122,7 +122,7 @@ export default function LeaderboardEpisodesGridPreview({
           })
         }
       </div>
-      <PreviewLink className={styles.scoreboardTabs} menu='Leaderboard Tabs'>
+      <PreviewLink className={styles.scoreboardTabs} menu='Tabs'>
         <Tab text='Global Highscores' className={styles.tabGlobalScores} />
         <Tab text='Mine' className={styles.tabMyScores} />
         <Tab text='Speedrun' className={styles.tabSpeedrun} />

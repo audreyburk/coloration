@@ -28,11 +28,9 @@ export const menus: {
     { fileName: 'entityDoorExitSwitch', index: 4 },
     { fileName: 'entityDoorExitSwitch', index: 2, space: true },
   ],
-  'Normal Door': [
+  'Openable Doors': [
     { fileName: 'entityDoorRegular', index: 0 },
-  ],
-  'Locked Door': [
-    { fileName: 'entityDoorLocked', index: 0 },
+    { fileName: 'entityDoorLocked', index: 0, space: true },
     { fileName: 'entityDoorLocked', index: 1 },
     { fileName: 'entityDoorLocked', index: 2, space: true },
     { fileName: 'entityDoorLocked', index: 4 },
@@ -172,6 +170,9 @@ export const menus: {
     { fileName: 'menu', index: 31 },
     { fileName: 'menu', index: 12, space: true },
     { fileName: 'menu', index: 33 },
+    { fileName: 'menu', index: 25, space: true },
+    { fileName: 'menu', index: 26 },
+    { fileName: 'menu', index: 27 },
   ],
   'Episode Grid': [
     { fileName: 'menu',           index: 9 },
@@ -188,11 +189,6 @@ export const menus: {
     { fileName: 'menu', index: 2 },
     { fileName: 'menu', index: 13 },
     { fileName: 'menu', index: 32, space: true },
-  ],
-  'Leaderboard Tabs': [
-    { fileName: 'menu', index: 25 },
-    { fileName: 'menu', index: 26 },
-    { fileName: 'menu', index: 27 },
   ],
   'Episode Details': [
     { fileName: 'menu', index: 35 },
@@ -282,7 +278,7 @@ export const menus: {
     { fileName: 'entityEyeBat', index: 1 },
     { fileName: 'editor',       index: 4 },
     { fileName: 'editor',       index: 6 },
-    { fileName: 'background',   index: 2, description: 'The object selector background is derived from the palette´s background color. Maybe don´t change it here.' },
+    { fileName: 'background',   index: 2, description: 'The object selector background is derived from the palette’s background color. Maybe don’t change it here.' },
   ],
   'Editor Lower Text': [
     { fileName: 'menu', index: 5 },

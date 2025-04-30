@@ -75,8 +75,7 @@ const objectCoordinates: [ string, number, number ][] = [
 const hoverCoordinates: [ string, number, number, number, number ][] = [
   [ 'Exit',             0.5,    1,    6,    1 ],
   [ 'Exit Switch',      7,      1,    2,    1 ],
-  [ 'Normal Door',      10,     1,    1,    1 ],
-  [ 'Locked Door',      11,     1,    3,    1 ],
+  [ 'Openable Doors',   10,     1,    4,    1 ],
   [ 'Trap Door',        14,     1,    3,    1 ],
   [ 'Gold',             17,     1,    1,    1 ],
   [ 'Thwumps',          1,      3,    3,    1 ],

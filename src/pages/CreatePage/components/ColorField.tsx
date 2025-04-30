@@ -9,7 +9,7 @@ interface Props {
   hex: string;
   text: string;
   onChange: (newColor: string) => void;
-  onFocus: () => void;
+  onFocus: (e?: any) => void;
   setCurrentPreview: (name: string) => void;
   className?: string;
   active?: boolean;

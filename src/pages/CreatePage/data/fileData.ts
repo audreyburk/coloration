@@ -67,10 +67,10 @@ export const objects: { [index: string]: string[] } = {
   ],
 
   menu: [
-    'General UI background. Empty space when game doesn´t fit screen resolution.',
+    'General UI background. Empty space when game doesn’t fit screen resolution.',
     'Leaderboard background.\n' +
       '(np) Editor: Side panel background (darkened later).',
-    'Leaderboard: Other players´ scores, your rank.\n' +
+    'Leaderboard: Other players’ scores, your rank.\n' +
       '(np) Race options text.\n' +
       '(np) Editor side panel: Unselected text.',
     'Panel background.',
@@ -92,7 +92,7 @@ export const objects: { [index: string]: string[] } = {
       '(np) Logo color. Cursor color.',
     '?',
     'Tabs background, selected (Episode Grid and Level List)',
-    'Other players´ names, your score.\n' +
+    'Other players’ names, your score.\n' +
       '(np) Profile: Header text in Badges/Killcount panel.',
     'Profile: Numbers and some text.\n' +
       '(np) Options: Unselected text, scrollbar triangles, upper dividing line.\n' +
@@ -102,7 +102,7 @@ export const objects: { [index: string]: string[] } = {
       '(np) Story: Text.\n' +
       '(np) Options: Selected text, little bar in scrollbar.\n' +
       '(np) Credits: Header text.',
-    'Other players´ ranks, your name, and messages ("Server error", etc.).\n' +
+    'Other players’ ranks, your name, and messages ("Server error", etc.).\n' +
       '(np) Race Options header\n' +
       '(np) Profile: Death count bars.\n' +
       '(np) Editor: Header text in side panel, messages when publishing, naming, etc. (not sure this is true; might just be the side panels)',
@@ -317,8 +317,8 @@ export const objects: { [index: string]: string[] } = {
   ],
 
   entityBat: [
-    'Deathball inner dot. Part of deathball´s zap.',
-    'Deathball middle circle. Part of deathball´s zap.',
+    'Deathball inner dot. Part of deathball’s zap.',
+    'Deathball middle circle. Part of deathball’s zap.',
     'Deathball outer circle.',
   ],
 

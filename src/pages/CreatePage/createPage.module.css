@@ -38,6 +38,10 @@
   margin-top: 36px;
 }
 
+.sidebar {
+  flex: 0;
+}
+
 .picker {
   width: 300px !important;
   height: 260px !important;
@@ -68,11 +72,22 @@
 }
 
 .generate {
-  margin-bottom: 40px;;
+  margin-top: 4px;
+  margin-bottom: 40px;
+  align-self: flex-start;
 }
 
+.namer {
+  margin-top: 40px;
+  padding: 8px;
+  text-align: center;
+  font-family: 'Courier New';
+  font-size: 18px;
+}
+
+
 .download{
-  margin-top: 20px;
+  margin-top: 4px;
 }
 
 .fields {

@@ -118,14 +118,14 @@ function createFile(colorGroup) {
 }
 
 // Generate all palette files, zip them and serve them
-export function createPalette(colors) {
+export function createPalette(colors, name = 'palette') {
   const zip = new JSZip()
   Object.entries(colors).forEach(([ fileName, colorGroup ]) => {
     const file = blobify(createFile(colorGroup))
     zip.file(fileName + '.tga', file)
   })
   zip.generateAsync({ type: 'blob' })
-    .then(content => saveAs(content, 'palette.zip'))
+    .then(content => saveAs(content, name + '.zip'))
 }
 
 /**

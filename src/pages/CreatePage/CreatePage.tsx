@@ -33,6 +33,7 @@ export default function CreatePage() {
   const [ currentMenu, setCurrentMenu ] = useState('Background')
   const [ currentIndex, setCurrentIndex ] = useState(0)
   const [ currentPreview, setCurrentPreview ] = useState('objects') // objects ingame editor episodes levels menus
+  const [ name, setName ] = useState('')
 
   const { fileName, index } = menus[currentMenu][currentIndex]
   const currentColor = colors[fileName][index]
@@ -57,7 +58,7 @@ export default function CreatePage() {
 
   function handleDownloadClick() {
     console.log(colors)
-    createPalette(colors)
+    createPalette(colors, name || 'palette')
   }
 
   function handleColorSelect(color: string) {
@@ -97,13 +98,14 @@ export default function CreatePage() {
         }
       </div>
       <div className={styles.rowOne}>
-        <div>
+        <div className={styles.sidebar}>
           <HexColorPicker
             className={styles.picker}
             color={currentColor}
             onChange={handleColorSelectThrottled}
           />
           <div className={styles.importExport}>
+            <span>Generates menus from the Objects screen colors. They will be messy; please tidy up.</span>
             <button
               className={styles.generate}
               onClick={handleMenuGeneration}
@@ -116,6 +118,12 @@ export default function CreatePage() {
               multiple={true}
               className={styles.upload}
               onChange={handleUpload}
+            />
+            <input
+              className={styles.namer}
+              placeholder='palette name'
+              value={name}
+              onChange={e => setName(e.target.value)}
             />
             <button
               className={styles.download}
@@ -137,7 +145,10 @@ export default function CreatePage() {
                   hex={colors[fileName][index]}
                   text={text}
                   onChange={handleColorSelectThrottled}
-                  onFocus={() => setCurrentIndex(i)}
+                  onFocus={(e: any) => {
+                    e.currentTarget.select()
+                    setCurrentIndex(i)
+                  }}
                   space={space}
                   active={currentIndex == i}
                   setCurrentPreview={setCurrentPreview}
