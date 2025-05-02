@@ -129,7 +129,7 @@ export const objects: { [index: string]: string[] } = {
     'Leaderboard entry selection box.',
     'Tabs text, selected (Episode Grid and Level List)',
     'Soundtrack name.',
-    '<levels> Level information text (level name, author, etc.).\n' +
+    '<levels> Level information text (level name, author, brackets, etc.).\n' +
       '<levels> Big header text in every submenu.\n' +
       '<ingame> Game messages: "Press X to start replay", "Success!", "Press X to continue", etc.',
     '?',
