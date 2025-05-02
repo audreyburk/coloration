@@ -4,9 +4,6 @@ import Tab          from './Tab'
 
 import styles from './objectsPreview.module.css'
 
-// TODO: group normal door with locked door (same menu, bigger hover)
-
-
 
 const objectCoordinates: [ string, number, number ][] = [
   [ 'exitOpen',                    1, 1 ],

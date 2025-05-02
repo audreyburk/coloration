@@ -131,7 +131,7 @@ export const objects: { [index: string]: string[] } = {
     'Soundtrack name.',
     '<levels> Level information text (level name, author, etc.).\n' +
       '<levels> Big header text in every submenu.\n' +
-      '<ingame> Game messages: "Press X to start replay", "Success!", "Oops!", "Press X to continue", etc.',
+      '<ingame> Game messages: "Press X to start replay", "Success!", "Press X to continue", etc.',
     '?',
     'Subtab text, unselected.',
     'Text after level/episode completion ("Your Global Rank", level times, etc.).',

@@ -7,8 +7,6 @@ import Tab          from './Tab'
 
 import styles from './leaderboardEpisodeGridPreview.module.css'
 
-// TODO: Menu tabs and leaderboard tabs in same menu?
-
 
 interface Props {
   colors: { [index: string]: string[] };
