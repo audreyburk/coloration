@@ -1,5 +1,7 @@
 import Color from 'color'
 
+// TODO: editor lines are HORRIBLE with background #010103
+
 function pick(base: string, ...rest: string[] ): string {
   const baseC = Color(base)
   if (!rest[0]) {

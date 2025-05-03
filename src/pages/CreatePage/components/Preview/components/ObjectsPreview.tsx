@@ -20,8 +20,8 @@ const objectCoordinates: [ string, number, number ][] = [
   [ 'trapDoorSwitchCollected',    16, 1 ],
   [ 'gold',                       17, 1 ],
 
-  [ 'shoveThwump',                 1, 3 ],
-  [ 'thwump',                      3, 3 ],
+  [ 'thwump',                      1, 3 ],
+  [ 'shoveThwump',                 3, 3 ],
   [ 'bounceBlock',                 5, 3 ],
   [ 'oneway',                      7, 3 ],
   [ 'launchpad',                   9, 3 ],

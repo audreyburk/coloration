@@ -152,13 +152,12 @@ export default function CreatePage() {
   }
 
   function handleKeyDown(e: any) {
-    console.log(e)
-    console.log(e.key, e.ctrlKey)
-    if (e.code == 'KeyZ' && (e.metaKey || e.ctrlKey)) {
-      e.preventDefault()
-      if (e.shiftKey) {
+    if (e.metaKey || e.ctrlKey) {
+      if ((e.code == 'KeyY' && !e.shiftKey) || (e.code == 'KeyZ' && e.shiftKey)) {
+        e.preventDefault()
         handleRedo()
-      } else {
+      } else if (e.code == 'KeyZ') {
+        e.preventDefault()
         handleUndo()
       }
     }
@@ -267,6 +266,8 @@ export default function CreatePage() {
             }
           </ul>
         </div>
+        {/* TODO: put some spare fields down here for copy-pasting, etc
+            maybe even the linked fields idea */}
       </div>
     </main>
   )
