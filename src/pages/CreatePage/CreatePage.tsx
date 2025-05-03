@@ -1,7 +1,7 @@
-// import { ColorResult } from 'react-color'
 import { useThrottledCallback } from 'use-debounce'
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { HexColorPicker } from 'react-colorful'
+import { ArrowUUpLeft, ArrowUUpRight } from '@phosphor-icons/react'
 
 // data files, big consts
 import fileData from './data/fileData'
@@ -21,6 +21,8 @@ import styles from './createPage.module.css'
 
 
 // TODO: do three-digit colors break the generated palettes? how do we prevent these inputs?
+// TODO: changing hue makes history slightly wonky if black
+
 
 const previewKeys = [
   [ 'objects', 'Objects' ],
@@ -55,16 +57,27 @@ export default function CreatePage() {
     })
   }
 
+  // so we probably want to throttle setColor and use that instead
+  // cuz it doesnt add to history
+  const setColorThrottled = useThrottledCallback((color: string) => {
+    return setColor(fileName, index, color)
+  }, 50, { leading: true })
 
-  const addHistory = () => {
+
+  const trimHistory = () => {
     if (historyIndex.current + 1 < history.current.length) {
       history.current = history.current.slice(0, historyIndex.current + 1)
     }
+  }
+
+  const addHistory = () => {
+    trimHistory()
     history.current.push( [ [ fileName, index, colors[fileName][index] ] ])
     historyIndex.current += 1
   }
 
   const addHistoryBundle = (newColors: { [index: string]: string[] }) => {
+    trimHistory()
     const bundle: [ string, number, string ][] = []
     Object.keys(newColors).forEach(fileName => {
       newColors[fileName].forEach((color: string, index: number) => {
@@ -90,8 +103,11 @@ export default function CreatePage() {
     })
   }
 
+  const canUndo = () => historyIndex.current >= 0
+  const canRedo = () => historyIndex.current + 1 < history.current.length
+
   const handleUndo = () => {
-    if (historyIndex.current < 0) {
+    if (!canUndo()) {
       return
     }
     applyHistory()
@@ -99,7 +115,7 @@ export default function CreatePage() {
   }
 
   const handleRedo = () => {
-    if (historyIndex.current + 1 == history.current.length) {
+    if (!canRedo()) {
       return
     }
     historyIndex.current += 1
@@ -120,7 +136,11 @@ export default function CreatePage() {
 
   function handleUpload(e: any) {
     loadPalette(e.target.files)
-      .then(setColors)
+      .then(result => {
+        history.current = []
+        historyIndex.current = -1
+        setColors(result)
+      })
       .catch((error: Error) => {
         alert(error)
       })
@@ -131,11 +151,25 @@ export default function CreatePage() {
     createPalette(colors, name || 'palette')
   }
 
-  // so we probably want to throttle setColor and use that instead
-  // cuz it doesnt add to history
-  const handleColorSelectThrottled = useThrottledCallback((color: string) => {
-    return handleColorSelect(color)
-  }, 50, { leading: true })
+  function handleKeyDown(e: any) {
+    console.log(e)
+    console.log(e.key, e.ctrlKey)
+    if (e.code == 'KeyZ' && (e.metaKey || e.ctrlKey)) {
+      e.preventDefault()
+      if (e.shiftKey) {
+        handleRedo()
+      } else {
+        handleUndo()
+      }
+    }
+  }
+
+  useEffect(() => {
+    document.addEventListener('keydown', handleKeyDown)
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown)
+    }
+  }, [ handleKeyDown ])
 
 
   return (
@@ -161,15 +195,15 @@ export default function CreatePage() {
       </div>
       <div className={styles.rowOne}>
         <div className={styles.sidebar}>
-          {/* only show these if undo/redo possible */}
-          <button onClick={handleUndo}>U N D O</button>
-          <button onClick={handleRedo}>Redo</button>
           <ImagePicker currentColor={currentColor} handleColorSelect={handleColorSelect} />
-          <HexColorPicker
-            className={styles.picker}
-            color={currentColor}
-            onChange={handleColorSelectThrottled}
-          />
+          {/* only track history of initial location when dragging to select */}
+          <div onMouseDown={addHistory}>
+            <HexColorPicker
+              className={styles.picker}
+              color={currentColor}
+              onChange={setColorThrottled}
+            />
+          </div>
           <div className={styles.importExport}>
             <span>Generates menus from the Objects screen colors. They will be messy; please tidy up.</span>
             <button
@@ -200,7 +234,17 @@ export default function CreatePage() {
           </div>
         </div>
         <div className={styles.fields}>
-          <div className={styles.fieldsTitle}>{ currentMenu }</div>
+          <div className={styles.fieldsTitle}>
+            { currentMenu }
+            <div className={styles.undoRedo}>
+              <button onClick={handleUndo} className={canUndo() ? styles.active : undefined}>
+                <ArrowUUpLeft size={32} />
+              </button>
+              <button onClick={handleRedo} className={canRedo() ? styles.active : undefined}>
+                <ArrowUUpRight size={32} />
+              </button>
+            </div>
+          </div>
           <ul>
             {
               menus[currentMenu].map((field, i) => {
@@ -210,7 +254,7 @@ export default function CreatePage() {
                   key={"field_" + fileName + index}
                   hex={colors[fileName][index]}
                   text={text}
-                  onChange={handleColorSelectThrottled}
+                  onChange={handleColorSelect}
                   onFocus={(e: any) => {
                     e.currentTarget.select()
                     setCurrentIndex(i)
