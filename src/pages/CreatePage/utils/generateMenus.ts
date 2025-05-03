@@ -11,7 +11,7 @@ function pick(base: string, ...rest: string[] ): string {
 }
 
 export function generateMenus(colors: { [index: string]: string[] }) {
-  const newColors = { ...colors }
+  const newColors = structuredClone(colors)
 
   // tile color -> menu background
   newColors.menu[0] = colors.background[0]

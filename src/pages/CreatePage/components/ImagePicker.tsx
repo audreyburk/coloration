@@ -3,6 +3,8 @@ import Color from 'color'
 
 import styles from './imagePicker.module.css'
 
+// TODO: refactor this shit
+
 interface Props {
   currentColor: string;
   handleColorSelect: (newColor: string) => void;
@@ -178,7 +180,6 @@ export default function ImagePicker(props: Props) {
 
     const { width, height } = imageRef.current!
     const { width: canvasWidth, height: canvasHeight } = imageCanvasRef.current!
-    console.log(canvasWidth, canvasHeight)
     const { deltaY, offsetX, offsetY } = e
     const { x, y, scale, minScale, maxScale } = canvasInfoRef.current
 

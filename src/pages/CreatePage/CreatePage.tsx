@@ -1,6 +1,6 @@
 // import { ColorResult } from 'react-color'
 import { useThrottledCallback } from 'use-debounce'
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import { HexColorPicker } from 'react-colorful'
 
 // data files, big consts
@@ -19,6 +19,9 @@ import ImagePicker from './components/ImagePicker'
 
 import styles from './createPage.module.css'
 
+
+// TODO: do three-digit colors break the generated palettes? how do we prevent these inputs?
+
 const previewKeys = [
   [ 'objects', 'Objects' ],
   [ 'episodes', 'Episode Grid' ],
@@ -36,8 +39,73 @@ export default function CreatePage() {
   const [ currentPreview, setCurrentPreview ] = useState('objects') // objects ingame editor episodes levels menus
   const [ name, setName ] = useState('')
 
+  const history = useRef<[ string, number, string ][][]>([])
+  const historyIndex = useRef(-1)
+
   const { fileName, index } = menus[currentMenu][currentIndex]
   const currentColor = colors[fileName][index]
+
+
+  // not convinced this is a necessary function
+  const setColor = (fileName: string, index: number, color: string) => {
+    setColors(colors => {
+      const newColors = structuredClone(colors)
+      newColors[fileName][index] = color
+      return newColors
+    })
+  }
+
+
+  const addHistory = () => {
+    if (historyIndex.current + 1 < history.current.length) {
+      history.current = history.current.slice(0, historyIndex.current + 1)
+    }
+    history.current.push( [ [ fileName, index, colors[fileName][index] ] ])
+    historyIndex.current += 1
+  }
+
+  const addHistoryBundle = (newColors: { [index: string]: string[] }) => {
+    const bundle: [ string, number, string ][] = []
+    Object.keys(newColors).forEach(fileName => {
+      newColors[fileName].forEach((color: string, index: number) => {
+        if (color != colors[fileName][index]) {
+          bundle.push([ fileName, index, colors[fileName][index] ])
+        }
+      })
+    })
+    history.current.push(bundle)
+    historyIndex.current += 1
+  }
+
+  const handleColorSelect = (color: string) => {
+    addHistory()
+    setColor(fileName, index, color)
+  }
+
+  const applyHistory = () => {
+    history.current[historyIndex.current] = history.current[historyIndex.current].map(([ fileName, index, color ]: [ string, number, string ]) => {
+      const newColor = colors[fileName][index]
+      setColor(fileName, index, color)
+      return [ fileName, index, newColor ]
+    })
+  }
+
+  const handleUndo = () => {
+    if (historyIndex.current < 0) {
+      return
+    }
+    applyHistory()
+    historyIndex.current -= 1
+  }
+
+  const handleRedo = () => {
+    if (historyIndex.current + 1 == history.current.length) {
+      return
+    }
+    historyIndex.current += 1
+    applyHistory()
+  }
+
 
   function setMenu(menu: string) {
     setCurrentIndex(0)
@@ -46,6 +114,7 @@ export default function CreatePage() {
 
   function handleMenuGeneration() {
     const newColors = generateMenus(colors)
+    addHistoryBundle(newColors)
     setColors(newColors)
   }
 
@@ -62,17 +131,8 @@ export default function CreatePage() {
     createPalette(colors, name || 'palette')
   }
 
-  const handleColorSelect = (color: string) => {
-    setColors({
-      ...colors,
-      [fileName]: [
-        ...colors[fileName].slice(0, index),
-        color.toUpperCase(),
-        ...colors[fileName].slice(index + 1)
-      ]
-    })
-  }
-
+  // so we probably want to throttle setColor and use that instead
+  // cuz it doesnt add to history
   const handleColorSelectThrottled = useThrottledCallback((color: string) => {
     return handleColorSelect(color)
   }, 50, { leading: true })
@@ -101,6 +161,9 @@ export default function CreatePage() {
       </div>
       <div className={styles.rowOne}>
         <div className={styles.sidebar}>
+          {/* only show these if undo/redo possible */}
+          <button onClick={handleUndo}>U N D O</button>
+          <button onClick={handleRedo}>Redo</button>
           <ImagePicker currentColor={currentColor} handleColorSelect={handleColorSelect} />
           <HexColorPicker
             className={styles.picker}
