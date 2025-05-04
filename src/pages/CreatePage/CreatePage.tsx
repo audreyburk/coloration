@@ -23,6 +23,9 @@ import styles from './createPage.module.css'
 // TODO: do three-digit colors break the generated palettes? how do we prevent these inputs?
 // TODO: changing hue makes history slightly wonky if black
 
+// TODO: move preview stuff into, well, Preview. fix background. fix button font.
+
+// TODO: use webkitdirectory file upload
 
 const previewKeys = [
   [ 'objects', 'Objects' ],
@@ -40,6 +43,7 @@ export default function CreatePage() {
   const [ currentIndex, setCurrentIndex ] = useState(0)
   const [ currentPreview, setCurrentPreview ] = useState('objects') // objects ingame editor episodes levels menus
   const [ name, setName ] = useState('')
+  const [ imageExists, setImageExists ] = useState(false)
 
   const history = useRef<[ string, number, string ][][]>([])
   const historyIndex = useRef(-1)
@@ -172,69 +176,83 @@ export default function CreatePage() {
 
 
   return (
-    <main>
+    <main className={styles.createPage}>
       <CurrentMenuContext value={setMenu}>
         {/* TODO: get rid of this lol */}
         <div className={styles.previews} style={{ backgroundColor: colors.menu[0] }}>
           <Preview colors={colors} currentPreview={currentPreview} />
+          <div className={styles.previewButtons}>
+            {
+              previewKeys.map(([ key, title ]) => {
+                let cn = styles.previewButton
+                if (key == currentPreview) {
+                  cn = cn + ' ' + styles.previewButtonActive
+                }
+                return <button key={key} className={cn} onClick={() => setCurrentPreview(key)}>
+                  { title }
+                </button>
+              })
+            }
+          </div>
         </div>
       </CurrentMenuContext>
-      <div className={styles.previewButtons}>
-        {
-          previewKeys.map(([ key, title ]) => {
-            let cn = styles.previewButton
-            if (key == currentPreview) {
-              cn = cn + ' ' + styles.previewButtonActive
-            }
-            return <div key={key} className={cn} onClick={() => setCurrentPreview(key)}>
-              { title }
-            </div>
-          })
-        }
-      </div>
-      <div className={styles.rowOne}>
-        <div className={styles.sidebar}>
-          <ImagePicker currentColor={currentColor} handleColorSelect={handleColorSelect} />
+      <div className={styles.interface}>
+        <div className={styles.colorPickers + ' ' + (imageExists ? styles.colorPickersExpanded : '')}>
           {/* only track history of initial location when dragging to select */}
-          <div onMouseDown={addHistory}>
-            <HexColorPicker
-              className={styles.picker}
-              color={currentColor}
-              onChange={setColorThrottled}
-            />
+          <div className={styles.gradientColumn}>
+            <div onMouseDown={addHistory}>
+              <HexColorPicker
+                className={styles.gradientPicker}
+                color={currentColor}
+                onChange={setColorThrottled}
+              />
+            </div>
+            <div className={styles.menuGenerator}>
+              <span className={styles.menuGeneratorInstructions}>
+                Generate menus from the Objects screen colors. They will be messy; please tidy up.
+              </span>
+              <button
+                className={styles.generate}
+                onClick={handleMenuGeneration}
+              >
+                Generate Menus
+              </button>
+            </div>
           </div>
-          <div className={styles.importExport}>
-            <span>Generates menus from the Objects screen colors. They will be messy; please tidy up.</span>
-            <button
-              className={styles.generate}
-              onClick={handleMenuGeneration}
-            >
-              Generate Menus
-            </button>
-            <span>Import palette (35 .tga files):</span>
-            <input
-              type="file"
-              multiple={true}
-              className={styles.upload}
-              onChange={handleUpload}
+          <div>
+            <ImagePicker
+              currentColor={currentColor}
+              handleColorSelect={handleColorSelect}
+              onImageToggle={setImageExists}
             />
-            <input
-              className={styles.namer}
-              placeholder='palette name'
-              value={name}
-              onChange={e => setName(e.target.value)}
-            />
-            <button
-              className={styles.download}
-              onClick={handleDownloadClick}
-            >
-              Download Palette
-            </button>
+            <div className={styles.import}>
+              <span className={styles.importInstructions}>Import palette (35 .tga files):</span>
+              <input
+                type="file"
+                multiple={true}
+                className={styles.upload}
+                onChange={handleUpload}
+              />
+            </div>
+            <div className={styles.export}>
+              <input
+                className={styles.namer}
+                placeholder='palette name'
+                value={name}
+                onChange={e => setName(e.target.value)}
+              />
+              <button
+                className={styles.download}
+                onClick={handleDownloadClick}
+              >
+                Download Palette
+              </button>
+            </div>
           </div>
         </div>
         <div className={styles.fields}>
-          <div className={styles.fieldsTitle}>
-            { currentMenu }
+          <div className={styles.fieldsHeader}>
+            <span className={styles.fieldsTitle}>{ currentMenu }</span>
             <div className={styles.undoRedo}>
               <button onClick={handleUndo} className={canUndo() ? styles.active : undefined}>
                 <ArrowUUpLeft size={32} />
@@ -254,7 +272,7 @@ export default function CreatePage() {
                   hex={colors[fileName][index]}
                   text={text}
                   onChange={handleColorSelect}
-                  onFocus={(e: any) => {
+                  onFocus={e => {
                     e.currentTarget.select()
                     setCurrentIndex(i)
                   }}
@@ -266,9 +284,9 @@ export default function CreatePage() {
             }
           </ul>
         </div>
-        {/* TODO: put some spare fields down here for copy-pasting, etc
-            maybe even the linked fields idea */}
       </div>
+      {/* TODO: put some spare fields down here for copy-pasting, etc
+          maybe even the linked fields idea */}
     </main>
   )
 }

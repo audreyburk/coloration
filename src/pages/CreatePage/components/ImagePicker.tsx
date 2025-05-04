@@ -8,10 +8,11 @@ import styles from './imagePicker.module.css'
 interface Props {
   currentColor: string;
   handleColorSelect: (newColor: string) => void;
+  onImageToggle?: (imageExists: boolean) => void;
 }
 
 export default function ImagePicker(props: Props) {
-  const { currentColor, handleColorSelect } = props
+  const { currentColor, handleColorSelect, onImageToggle } = props
 
   const [ imageExists, setImageExists ] = useState(false)
   const [ mouseDown, setMouseDown ] = useState(false)
@@ -23,6 +24,12 @@ export default function ImagePicker(props: Props) {
   const canvasCursorRef = useRef<HTMLDivElement | null>(null)
   const canvasInfoRef = useRef({ x: 0, y: 0, scale: 1, minScale: 0, maxScale: 2 })
   const mouseRef = useRef({ startX: 0, startY: 0, x: 0, y: 0 })
+
+
+  const changeImageExists = (exists: boolean) => {
+    onImageToggle?.(exists)
+    setImageExists(exists)
+  }
 
   // okay, we need to use ref instead of state for anything canvas-related
   // but should img live in state? hmmm
@@ -54,7 +61,7 @@ export default function ImagePicker(props: Props) {
       img.src = url
       imageRef.current = img
       img.addEventListener('load', () => {
-        setImageExists(true)
+        changeImageExists(true)
         if (imageCanvasRef.current) {
           const { width, height } = img
           const maxWidth = imageCanvasRef.current.offsetWidth
@@ -247,9 +254,8 @@ export default function ImagePicker(props: Props) {
     }
   }
 
-  // TODO: also add a "hide" button that tucks canvas but doesnt remove image or zoom/position?
   function clearImage() {
-    setImageExists(false)
+    changeImageExists(false)
     if (imageUploadRef.current) {
       imageUploadRef.current.value = ''
     }
@@ -261,21 +267,6 @@ export default function ImagePicker(props: Props) {
   }
 
   return <div className={styles.imagePicker}>
-  <div className={styles.imagePickerButtons}>
-    <label
-      htmlFor='imgUpload'
-      className={styles.imagePickerLabel}>
-      Upload an image
-    </label>
-    <input
-      id='imgUpload'
-      type="file"
-      className={styles.imagePickerInput}
-      onChange={handleImageUpload}
-      ref={imageUploadRef}
-    />
-    { imageExists && <span onClick={clearImage}>Clear</span> }
-  </div>
     <div className={styles.canvasContainer}>
       <canvas
         className={styles.image}
@@ -289,6 +280,23 @@ export default function ImagePicker(props: Props) {
         ref={canvasCursorRef}
         style={{ borderColor: currentColor }} /> }
     </div>
-    { imageExists && <span>scroll to zoom, drag to pan</span> }
+    <div className={styles.imagePickerLower}>
+      { imageExists && <span className={styles.imagePickerNote}>scroll to zoom, drag to pan</span> }
+      <div className={styles.imagePickerButtons}>
+        <label
+          htmlFor='imgUpload'
+          className={styles.imagePickerLabel}>
+          Upload an image
+        </label>
+        <input
+          id='imgUpload'
+          type="file"
+          className={styles.imagePickerInput}
+          onChange={handleImageUpload}
+          ref={imageUploadRef}
+        />
+        { imageExists && <span onClick={clearImage}>Clear</span> }
+      </div>
+    </div>
   </div>
 }

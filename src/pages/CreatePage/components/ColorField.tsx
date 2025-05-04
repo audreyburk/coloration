@@ -23,6 +23,8 @@ export default function ColorField(props: Props) {
     ? '#000'
     : '#FFF'
 
+  // TODO: add a pretty highlight color. maybe average of background and text? maybe inverse?
+
   let cn = styles.field
   if (active) {
     cn = cn + ' ' + styles.fieldActive

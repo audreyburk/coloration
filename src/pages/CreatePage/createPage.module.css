@@ -1,7 +1,16 @@
+.createPage {
+  width: 1216px;
+  margin: 0 auto 60px;
+
+  @media (width >= 1650px) {
+    width: 1616px;
+  }
+}
+
 .previews {
   position: relative;
-  width: calc(100% + 72px);
-  margin-left: -36px;
+  width: 1216px;
+  margin: 0 auto;
   user-select: none;
   font-family: Sys;
   line-height: 1;
@@ -11,46 +20,93 @@
 }
 
 .previewButtons {
-  margin-left: -36px;
+  display: flex;
+  background-color: #131313;
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
 
 .previewButton {
-  display: inline-block;
-  padding: 14px 16px 16px;
-  border: none;
-  font-size: 18px;
-  font-weight: 500;
-  line-height: 1;
-  cursor: pointer;
-}
-.previewButton:hover {
-  background-color: #FFFFFF10;
+  flex: 1;
 }
 
-.previewButtonActive,
-.previewButtonActive:hover {
-  background-color: #FFFFFF15;
+.previewButtonActive {
+  background-color: #373737;
 }
 
-.rowOne {
+.interface {
   display: flex;
-  flex-wrap: wrap;
-  margin-top: 36px;
+  justify-content: center;
+  align-items: flex-start;
+  margin-top: 28px;
 }
 
-.sidebar {
-  flex: 0 0 360px;
+.colorPickers {
+  display: flex;
+  flex-direction: column;
+  width: 360px;
+  margin-right: 28px;
+}
+.colorPickersExpanded {
+  @media (width >= 1650px) {
+    flex-direction: row;
+    width: auto;
+  }
 }
 
-.picker {
+.gradientColumn {
+  width: 360px;
+  margin-bottom: 20px;
+}
+
+.colorPickersExpanded .gradientColumn {
+  margin-right: 28px;
+}
+
+.gradientPicker {
   width: 100% !important;
-  height: 280px !important;
+  height: 300px !important;
+
+  :global(.react-colorful__saturation) {
+    border-radius: 0;
+  }
+
+  :global(.react-colorful__hue) {
+    border-radius: 0;
+  }
 }
 
-.importExport {
+.menuGenerator {
+  margin-top: 20px;
+  background-color: #131313;
+}
+
+.menuGeneratorInstructions {
+  display: block;
+  padding: 14px 20px 6px;
+  font-style: italic;
+}
+
+.generate {
+  width: 100%;
+  margin-top: 4px;
+}
+
+.import,
+.export {
   display: flex;
   flex-flow: column;
-  margin-top: 60px;
+  align-items: flex-start;
+  margin-top: 20px;
+  background: #131313;
+}
+
+.import {
+  padding: 14px 20px 20px;;
+}
+
+.importInstructions {
+  margin-bottom: 2px;
+  font-style: italic;
 }
 
 .upload {
@@ -64,63 +120,54 @@
 }
 
 .upload::file-selector-button,
-.download,
-.generate {
+.download {
   font-size: 18px;
   padding: 16px 16px 14px;
   cursor: pointer;
 }
 
-.generate {
-  margin-top: 4px;
-  margin-bottom: 40px;
-  align-self: flex-start;
-}
-
 .namer {
-  margin-top: 40px;
+  margin: 16px auto 6px;
   padding: 8px;
   text-align: center;
   font-family: 'Courier New';
   font-size: 18px;
 }
 
-
 .download{
-  margin-top: 4px;
+  width: 100%;
 }
 
 .fields {
-  flex: 1 1 0;
-  padding-left: 44px;
+  flex: 0 0 828px;
+  padding: 0 28px 20px;
+  background-color: #131313;
 }
 
-.fieldsTitle {
+.fieldsHeader {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  height: 48px;
   font-size: 24px;
   line-height: 1;
 }
 
 .undoRedo {
   display: flex;
-  justify-content: space-between;
-  width: 96px;
 }
 
 .undoRedo button {
-  padding: 0 4px;
-  background: none;
-  outline: none;
-  border: none;
-  color: black;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  color: #191919;
 }
-
+.undoRedo button:not(.active) {
+  background: none;
+  cursor: default;
+}
 .undoRedo button.active {
   color: inherit;
-  cursor: pointer;
 }
 
-.undoRedo button.active:hover {
-  background-color: #FFFFFF15;
-}

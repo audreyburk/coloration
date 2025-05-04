@@ -6,10 +6,6 @@ import MenuPreview from './components/MenuPreview'
 import ObjectsPreview from './components/ObjectsPreview'
 import UnknownPreview from './components/UnknownPreview'
 
-
-// i think we'll end up factoring out this component, actually
-// LMAO
-
 // TODO: pass through props with rest/spread
 
 interface Props {
@@ -22,7 +18,6 @@ export default function Preview({
   currentPreview
 }: Props) {
   return <>
-    {/* make sure switching among these doesnt get messy. lack of keys is concerning. */}
     { currentPreview === 'objects' &&     <ObjectsPreview colors={colors} /> }
     { currentPreview === 'editor' &&      <EditorPreview colors={colors} /> }
     { currentPreview === 'ingame' &&      <InGamePreview colors={colors} /> }
