@@ -196,58 +196,76 @@ export default function CreatePage() {
           </div>
         </div>
       </CurrentMenuContext>
-      <div className={styles.interface}>
-        <div className={styles.colorPickers + ' ' + (imageExists ? styles.colorPickersExpanded : '')}>
+      <div className={styles.interface + ' ' + (imageExists ? styles.interfaceExpanded : '')}>
+        <div className={styles.columnB}>
           {/* only track history of initial location when dragging to select */}
-          <div className={styles.gradientColumn}>
-            <div onMouseDown={addHistory}>
-              <HexColorPicker
-                className={styles.gradientPicker}
-                color={currentColor}
-                onChange={setColorThrottled}
-              />
-            </div>
-            <div className={styles.menuGenerator}>
-              <span className={styles.menuGeneratorInstructions}>
-                Generate menus from the Objects screen colors. They will be messy; please tidy up.
-              </span>
-              <button
-                className={styles.generate}
-                onClick={handleMenuGeneration}
-              >
-                Generate Menus
-              </button>
-            </div>
-          </div>
-          <div>
-            <ImagePicker
-              currentColor={currentColor}
-              handleColorSelect={handleColorSelect}
-              onImageToggle={setImageExists}
+          <div onMouseDown={addHistory}>
+            <HexColorPicker
+              className={styles.gradientPicker}
+              color={currentColor}
+              onChange={setColorThrottled}
             />
-            <div className={styles.import}>
-              <span className={styles.importInstructions}>Import palette (35 .tga files):</span>
-              <input
-                type="file"
-                multiple={true}
-                className={styles.upload}
-                onChange={handleUpload}
-              />
-            </div>
-            <div className={styles.export}>
-              <input
-                className={styles.namer}
-                placeholder='palette name'
-                value={name}
-                onChange={e => setName(e.target.value)}
-              />
-              <button
-                className={styles.download}
-                onClick={handleDownloadClick}
-              >
-                Download Palette
-              </button>
-            </div>
+          </div>
+          <div className={styles.menuGenerator}>
+            <span className={styles.menuGeneratorInstructions}>
+              Generate menus from the Objects screen colors. They will be messy; please tidy up.
+            </span>
+            <button
+              className={styles.generate}
+              onClick={handleMenuGeneration}
+            >
+              Generate Menus
+            </button>
+          </div>
+        </div>
+        <div className={styles.columnA}>
+          {/* only track history of initial location when dragging to select */}
+          <div className={styles.gradientContainer} onMouseDown={addHistory}>
+            <HexColorPicker
+              className={styles.gradientPicker}
+              color={currentColor}
+              onChange={setColorThrottled}
+            />
+          </div>
+          <div className={styles.menuGenerator}>
+            <span className={styles.menuGeneratorInstructions}>
+              Generate menus from the Objects screen colors. They will be messy; please tidy up.
+            </span>
+            <button
+              className={styles.generate}
+              onClick={handleMenuGeneration}
+            >
+              Generate Menus
+            </button>
+          </div>
+          <ImagePicker
+            className={styles.imagePicker}
+            currentColor={currentColor}
+            handleColorSelect={handleColorSelect}
+            onImageToggle={setImageExists}
+          />
+          <div className={styles.import}>
+            <span className={styles.importInstructions}>Import palette (35 .tga files):</span>
+            <input
+              type="file"
+              multiple={true}
+              className={styles.upload}
+              onChange={handleUpload}
+            />
+          </div>
+          <div className={styles.export}>
+            <input
+              className={styles.namer}
+              placeholder='palette name'
+              value={name}
+              onChange={e => setName(e.target.value)}
+            />
+            <button
+              className={styles.download}
+              onClick={handleDownloadClick}
+            >
+              Download Palette
+            </button>
           </div>
         </div>
         <div className={styles.fields}>

@@ -9,10 +9,11 @@ interface Props {
   currentColor: string;
   handleColorSelect: (newColor: string) => void;
   onImageToggle?: (imageExists: boolean) => void;
+  className?: string;
 }
 
 export default function ImagePicker(props: Props) {
-  const { currentColor, handleColorSelect, onImageToggle } = props
+  const { currentColor, handleColorSelect, onImageToggle, className } = props
 
   const [ imageExists, setImageExists ] = useState(false)
   const [ mouseDown, setMouseDown ] = useState(false)
@@ -266,7 +267,12 @@ export default function ImagePicker(props: Props) {
     }
   }
 
-  return <div className={styles.imagePicker}>
+  let cn = styles.imagePicker
+  if (className) {
+    cn = cn + ' ' + className
+  }
+
+  return <div className={cn}>
     <div className={styles.canvasContainer}>
       <canvas
         className={styles.image}

@@ -40,26 +40,36 @@
   margin-top: 28px;
 }
 
-.colorPickers {
+.columnA,
+.columnB {
   display: flex;
   flex-direction: column;
   width: 360px;
   margin-right: 28px;
-}
-.colorPickersExpanded {
-  @media (width >= 1650px) {
-    flex-direction: row;
-    width: auto;
+
+  > div:not(:last-child) {
+    margin-bottom: 20px;
   }
 }
 
-.gradientColumn {
-  width: 360px;
-  margin-bottom: 20px;
+.columnB {
+  display: none;
+}
+.interfaceExpanded .columnB {
+  @media (width >= 1650px) {
+    display: flex;
+  }
 }
 
-.colorPickersExpanded .gradientColumn {
-  margin-right: 28px;
+.interfaceExpanded .imagePicker {
+  order: -1;
+}
+
+.interfaceExpanded .columnA .menuGenerator,
+.interfaceExpanded .columnA .gradientContainer {
+  @media (width >= 1650px) {
+    display: none;
+  }
 }
 
 .gradientPicker {
@@ -76,7 +86,6 @@
 }
 
 .menuGenerator {
-  margin-top: 20px;
   background-color: #131313;
 }
 
@@ -96,7 +105,6 @@
   display: flex;
   flex-flow: column;
   align-items: flex-start;
-  margin-top: 20px;
   background: #131313;
 }
 
